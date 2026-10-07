@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+README.md
+.ci
+.github
+.husky
+nginx
+pnpm-lock.yaml
