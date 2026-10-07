@@ -31,7 +31,6 @@ const config: Config = {
       ],
       exclude: ["src/contexts/Providers/**/*.tsx"],
     },
-    setupFiles: "./src/test/setup.ts",
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
     css: true,
   },
