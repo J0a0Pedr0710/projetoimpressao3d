@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
-      "props": ["src/Types/props.d.ts"],
-      "functions": ["src/Types/functions.d.ts"],
-      "models": ["src/Types/models.d.ts"],
-      "contexts": ["src/Types/contexts.d.ts"],
-      "animations": ["src/Types/animations.d.ts"],
-      "components": ["src/Types/components.d.ts"],
-      "response": ["src/Types/response.d.ts"],
+      "props": ["src/types/props.d.ts"],
+      "functions": ["src/types/functions.d.ts"],
+      "models": ["src/types/models.d.ts"],
+      "contexts": ["src/types/contexts.d.ts"],
+      "animations": ["src/types/animations.d.ts"],
+      "components": ["src/types/components.d.ts"],
+      "response": ["src/types/response.d.ts"],
       "packageJson": ["./package.json"],
       "@/*": ["./src/*"]
     },
