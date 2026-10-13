@@ -9,8 +9,8 @@ const config: Config = {
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      packageJson: path.resolve(__dirname, "./package.json"),
+      "@": path.resolve(import.meta.dirname, "./src"),
+      packageJson: path.resolve(import.meta.dirname, "./package.json"),
     },
   },
   build: {

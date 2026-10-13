@@ -1,4 +1,4 @@
-import { Routes } from "./Routes/routes";
+import { Routes } from "./routes/routes";
 
 export const App = () => (
   <div data-testid="App">
