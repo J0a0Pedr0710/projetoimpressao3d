@@ -1,7 +1,8 @@
 import type { AxiosInstance } from 'axios';
 import type { IRequest } from 'tests';
 
-import { apiInterfreight, apiPagarme } from '@/services';
+import { apiInterfreight } from '@/services/api';
+import { apiPagarme } from '@/services/pagarme';
 
 export const apiMock = ({ method, data, error, instance = 'apiInterfreight' }: IRequest) => {
   const response = {

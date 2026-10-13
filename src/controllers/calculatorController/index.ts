@@ -7,14 +7,9 @@ import type {
   IPaymentBuyerDetailsInputModel,
   IPaymentInputModel,
 } from 'props';
-import type {
-  ICalculatorResponse,
-  ICartItemResponse,
-  ICheckoutResponse,
-  ICheckoutSplitResponse,
-} from 'response';
+import type { ICalculatorResponse, ICartItemResponse, ICheckoutResponse } from 'response';
 
-import { apiInterfreight } from '@/services';
+import { apiInterfreight } from '@/services/api';
 import { errorMessage } from '@/utils/services/errorMessage';
 
 const routeInterfreight = '/calculator';
@@ -77,16 +72,6 @@ const checkout = (
       .catch((error) => reject(errorMessage(error, false, true))),
   );
 
-const checkoutSplit = (items: ICartItemsInputModel[]) =>
-  new Promise<ICheckoutSplitResponse>((resolve, reject) =>
-    apiInterfreight
-      .post(`${routeInterfreight}/cart/payment/split`, {
-        items,
-      })
-      .then(({ data }) => resolve(data))
-      .catch((error) => reject(errorMessage(error, false, true))),
-  );
-
 const addShipping = (input: IAddShippingToCart) => {
   const formData = new FormData();
   formData.append('body', JSON.stringify(input.body));
@@ -143,7 +128,6 @@ const saveMarkup = (markup: number) =>
   );
 
 export const calculatorController = {
-  checkoutSplit,
   getCartItems,
   addCreditWallet,
   deleteItems,

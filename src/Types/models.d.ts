@@ -46,4 +46,20 @@ declare module 'models' {
     isNotify: boolean;
     messages: INotificationMessage[];
   };
+
+  type ICartItem = {
+    id: string;
+    type: 'SHIPPING' | 'WALLET';
+    amount: number;
+    discount: number;
+    nameOrigin?: string;
+    nameDestiny?: string;
+    cityOrigin?: string;
+    cityDestiny?: string;
+    stateOrigin?: string;
+    stateDestiny?: string;
+    carrier?: string;
+    enableCheck?: boolean;
+    isLoadingItem?: boolean;
+  };
 }
