@@ -1,7 +1,7 @@
-
-import type { IButton } from './types';
-import { StyleButton } from './style';
 import { useApp } from '@/contexts';
+
+import { StyleButton } from './style';
+import type { IButton } from './types';
 
 export const Button = ({
   variant,

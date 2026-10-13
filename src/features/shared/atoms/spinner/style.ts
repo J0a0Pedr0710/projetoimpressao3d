@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
+import { spin } from '@/styles/animations/spin';
+
 import type { IStyleSpinner } from './types';
-import { spin } from '@/style/animation/spin';
 
 const spinnerSizes = {
   sm: { width: '25px', height: '25px', border: '3px' },

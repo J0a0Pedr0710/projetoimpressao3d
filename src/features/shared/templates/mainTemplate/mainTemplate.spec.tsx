@@ -9,8 +9,8 @@ import { defaultTheme } from '@/styles';
 import { MockImport, MockValue } from '@/test/common/importMock';
 import { mockAppContext, mockAuthContext } from '@/test/mocks/contexts';
 
-import { MainTemplate } from '.';
-import type { IMainTemplate } from './types';
+import { MainTemplate } from '../templates/mainTemplate';
+import type { IMainTemplate } from '../templates/mainTemplate/types';
 
 vi.mock('@/contexts', async () => {
   const actual = await vi.importActual('@/contexts');

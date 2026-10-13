@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "paths": {
       "props": ["src/types/props.d.ts"],
       "functions": ["src/types/functions.d.ts"],

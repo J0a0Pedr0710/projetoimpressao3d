@@ -1,5 +1,3 @@
 import type { ISideBarOptions } from 'props';
 
-export const defaultSidebarOptions: ISideBarOptions[] = [
- 
-];
+export const defaultSidebarOptions: ISideBarOptions[] = [];

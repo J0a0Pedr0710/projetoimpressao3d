@@ -1,11 +1,19 @@
-import { AppContext, AuthContext, CartContext, MainTemplateContext } from "@/constants/contexts";
-import { use } from "react";
+import { useContext } from 'react';
 
-const useApp = () => use(AppContext);
-const useAuth = () => use(AuthContext);
-const useMainTemplateContext = () => use(MainTemplateContext);
-const useCart = () => use(CartContext);
+import {
+  AppContext,
+  AuthContext,
+  CartContext,
+  MainTemplateContext,
+  ProfileContext,
+  TransactionContext,
+} from '@/constants/contexts';
 
+const useApp = () => useContext(AppContext);
+const useAuth = () => useContext(AuthContext);
+const useMainTemplateContext = () => useContext(MainTemplateContext);
+const useCart = () => useContext(CartContext);
+const useProfile = () => useContext(ProfileContext);
+const useTransactionContext = () => useContext(TransactionContext);
 
-
-export { useApp, useAuth, useMainTemplateContext, useCart };
+export { useApp, useAuth, useMainTemplateContext, useCart, useProfile, useTransactionContext };

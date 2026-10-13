@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
+import { Icon } from '@/features/shared/atoms/icons';
+import { Text } from '@/features/shared/atoms/text';
 
 import { AlertStyle, ButtonGroup, Content } from './style';
 import type { IAlert } from './types';
-import { Text } from '@/features/shared/atoms/text';
-import { Icon } from '@/features/shared/atoms/icons';
 
 export const Alert = ({ type, message, isFullWitdh, isClose, onClose, time }: IAlert) => {
   useEffect(() => {

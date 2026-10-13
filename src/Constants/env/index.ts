@@ -1,4 +1,4 @@
-import { envSchema } from "@/schemas/env";
+import { envSchema } from '@/schemas/env';
 
 const getEnv = () => {
   const envVariables = {
