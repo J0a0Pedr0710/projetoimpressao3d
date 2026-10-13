@@ -5,7 +5,7 @@ import { Home } from '@/features/home';
 import { Profile } from '@/features/profile';
 
 export const routeConfig: RouteObject[] = [
-  { path: '/', element: <Home /> },
+  { path: '/Home', element: <Home /> },
   { path: '/Sobre', element: <About /> },
   { path: '/Profile', element: <Profile /> },
 ];
