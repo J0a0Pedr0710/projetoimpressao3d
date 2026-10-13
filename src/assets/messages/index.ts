@@ -16,12 +16,15 @@ export const messages = {
     myNotificationsTitle: 'Minhas notificações',
   },
   months: {},
-  label: {},
+  label: {
+    notPossibleToModify: 'Não é possível modificar essa informação!',
+  },
   error: {
     sessionExpiredOnLogin: 'Sua sessão expirou. Por favor, faça login novamente.',
     authError: 'Erro ao autenticar usuário',
     tokenInvalid: 'O Token é inválido.',
     errorAddCreditWallet: 'Não foi possível adicionar crédito à carteira',
+    monetaryValue: 'Valor mínimo ',
   },
   success: { successAddCreditWallet: 'Crédito adicionado com sucesso' },
   texts: {
@@ -47,6 +50,8 @@ export const messages = {
     yesterday: 'Ontem',
     balanceInWallet: 'Saldo na carteira',
     wallet: 'Carteira',
+    walletModalCurrentBalance: 'Saldo atual na carteira',
+    cancel: 'Cancelar',
   },
   countries: {
     AF: 'Afeganistão',

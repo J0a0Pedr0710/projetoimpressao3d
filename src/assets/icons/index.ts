@@ -1,27 +1,31 @@
-import { ActionIcon } from './actionIcon';
-import { alertErrorBadge } from './alertErrorBadge';
-import { arrowDownFilled } from './arrowDownFilled';
-import { arrowUp } from './arrowUp';
-import { arrowUpSquare } from './arrowUpSquare';
-import { bell } from './bell';
-import { calendar } from './calendar';
-import { cart } from './cart';
-import { checkBadge } from './checkBadge';
-import { chevronRight } from './chevronRight';
-import { inIcon } from './in';
-import { info } from './info';
-import { listRadio } from './listRadio';
-import { logout } from './logout';
-import { menu } from './menu';
-import { notFoundData } from './notFoundData';
-import { out } from './out';
-import { plus } from './plus';
-import { question } from './question';
-import { settings } from './settings';
-import { triangleExclamationFilled } from './triangleExclamationFilled';
-import { wallet } from './wallet';
-import { whatsapp } from './whatsapp';
-import { x } from './x';
+import { ActionIcon } from '@/assets/icons/actionIcon';
+import { alertErrorBadge } from '@/assets/icons/alertErrorBadge';
+import { arrowDownFilled } from '@/assets/icons/arrowDownFilled';
+import { arrowUp } from '@/assets/icons/arrowUp';
+import { arrowUpSquare } from '@/assets/icons/arrowUpSquare';
+import { bell } from '@/assets/icons/bell';
+import { calendar } from '@/assets/icons/calendar';
+import { cart } from '@/assets/icons/cart';
+import { checkBadge } from '@/assets/icons/checkBadge';
+import { chevronDown } from '@/assets/icons/chevronDown';
+import { chevronLeft } from '@/assets/icons/chevronLeft';
+import { chevronRight } from '@/assets/icons/chevronRight';
+import { chevronUp } from '@/assets/icons/chevronUp';
+import { errorCircle } from '@/assets/icons/errorCircle';
+import { inIcon } from '@/assets/icons/in';
+import { info } from '@/assets/icons/info';
+import { listRadio } from '@/assets/icons/listRadio';
+import { logout } from '@/assets/icons/logout';
+import { menu } from '@/assets/icons/menu';
+import { notFoundData } from '@/assets/icons/notFoundData';
+import { out } from '@/assets/icons/out';
+import { plus } from '@/assets/icons/plus';
+import { question } from '@/assets/icons/question';
+import { settings } from '@/assets/icons/settings';
+import { triangleExclamationFilled } from '@/assets/icons/triangleExclamationFilled';
+import { wallet } from '@/assets/icons/wallet';
+import { whatsapp } from '@/assets/icons/whatsapp';
+import { x } from '@/assets/icons/x';
 
 export const ProjetoIcons = {
   ActionIcon,
@@ -48,4 +52,8 @@ export const ProjetoIcons = {
   chevronRight,
   bell,
   arrowDownFilled,
+  chevronLeft,
+  chevronUp,
+  chevronDown,
+  errorCircle,
 };

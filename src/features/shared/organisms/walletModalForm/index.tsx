@@ -8,7 +8,7 @@ import { Modal } from '@/features/shared/atoms/modal';
 import { Text } from '@/features/shared/atoms/text';
 import { Title } from '@/features/shared/atoms/title';
 import { ControlInput } from '@/features/shared/molecules/controlInput';
-import { useWallet } from '@/hooks';
+import { useWallet } from '@/hooks/useWallet';
 import { formatIntegerToNumber } from '@/utils/format/formatInteger';
 import { formatNumberToPrice, formatNumberToString } from '@/utils/format/formatPrice';
 
@@ -30,13 +30,8 @@ export const WalletModalForm = ({ onClose, isOpen }: IWalletModalForm) => {
 
   const minValue = formatNumberToString(100);
 
-  const {
-    walletModalTitle,
-    walletModalAddCredit,
-    walletModalTotal,
-    walletModalCurrentBalance,
-    cancel,
-  } = messages.texts;
+  const { wallet, walletModalAddCredit, walletModalTotal, walletModalCurrentBalance, cancel } =
+    messages.texts;
   const { currencySymbol } = messages;
   const { monetaryValue } = messages.error;
 
@@ -51,7 +46,7 @@ export const WalletModalForm = ({ onClose, isOpen }: IWalletModalForm) => {
       <WalletModalFormWrapper onKeyDown={handleKeyDown}>
         <Header>
           <Title size={isScreenXs ? '2xl' : 'lg'} isBold>
-            {walletModalTitle}
+            {wallet}
           </Title>
           <button onClick={onClose}>
             <Icon icon="x" color="neutral500" />
