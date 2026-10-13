@@ -1,8 +1,9 @@
 import ReactModal from 'react-modal';
 
+import { GrowAnimation } from '@/styles';
+
 import { ModalStyle } from './style';
 import type { IModal } from './types';
-import { GrowAnimation } from '@/style';
 
 export const Modal = ({ children, isOpen, onClose, isOverlayDisabled }: IModal) => {
   const handleClose = () => {

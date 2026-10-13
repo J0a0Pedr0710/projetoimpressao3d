@@ -12,8 +12,7 @@ export const Footer = () => {
   return (
     <Container>
       <Text>
-        © Powered by <a href="http://localhost:5173">Projeto 3D.</a>{' '}
-        {currentYear}
+        © Powered by <a href="http://localhost:5173">Projeto 3D.</a> {currentYear}
       </Text>
       <Text>
         {createdByEntrepreneursLikeYou}! Version: {packageJson.version}

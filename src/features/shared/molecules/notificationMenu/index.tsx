@@ -5,7 +5,7 @@ import { Icon } from '@/features/shared/atoms/icons';
 import { Menu } from '@/features/shared/atoms/menu';
 import { Text } from '@/features/shared/atoms/text';
 import { Title } from '@/features/shared/atoms/title';
-import { useTopBarMenu } from '@/hooks';
+import { useTopBarMenu } from '@/hooks/useTopBarMenu';
 import { formatDate } from '@/utils/format/formatDate';
 
 import {

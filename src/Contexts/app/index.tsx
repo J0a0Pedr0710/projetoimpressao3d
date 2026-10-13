@@ -11,14 +11,15 @@ import { v4 as uuid } from 'uuid';
 import { messages } from '@/assets/messages';
 import { AppContext } from '@/constants/contexts';
 import { notifyDeparturePaths } from '@/constants/notifyDeparturePaths';
-import { AlertContent, ButtonGroup, ModalContainer } from './style';
-import { Title } from '@/features/shared/atoms/titles';
-import { Text } from '@/features/shared/atoms/text';
 import { Button } from '@/features/shared/atoms/button';
-import { defaultScreen, defaultTheme, GlobalStyle, sideBarScreen } from '@/style';
-import type { IAlert } from '@/features/shared/molecules/alert/types';
-import { Alert } from '@/features/shared/molecules/alert';
 import { Modal } from '@/features/shared/atoms/modal';
+import { Text } from '@/features/shared/atoms/text';
+import { Title } from '@/features/shared/atoms/title';
+import { Alert } from '@/features/shared/molecules/alert';
+import type { IAlert } from '@/features/shared/molecules/alert/types';
+import { GlobalStyle, defaultScreen, defaultTheme, sideBarScreen } from '@/styles';
+
+import { AlertContent, ButtonGroup, ModalContainer } from './style';
 
 export const AppProvider = ({ children }: IProvider) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -112,37 +113,37 @@ export const AppProvider = ({ children }: IProvider) => {
   return (
     <AppContext.Provider value={context}>
       <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          {alertProps.length !== 0 && (
-            <AlertContent>
-              {alertProps.map((props) => (
-                <Alert {...props} key={props.message} />
-              ))}
-            </AlertContent>
-          )}
-          <Modal isOpen={modalProps !== null} onClose={() => setModalProps(null)}>
-            <ModalContainer>
-              <Title size="2xl" isBold>
-                {redo}
-              </Title>
-              <Text>{modalProps?.modalMessage}</Text>
-              <ButtonGroup>
-                <Button variant="secondary" onClick={() => setModalProps(null)} isFullWidth>
-                  {no}
-                </Button>
-                <Button
-                  onClick={() => {
-                    setModalProps(null);
-                    navigate(modalProps?.to || '');
-                  }}
-                  isFullWidth
-                >
-                  {yes}
-                </Button>
-              </ButtonGroup>
-            </ModalContainer>
-          </Modal>
-          {children}
+        <GlobalStyle />
+        {alertProps.length !== 0 && (
+          <AlertContent>
+            {alertProps.map((props) => (
+              <Alert {...props} key={props.message} />
+            ))}
+          </AlertContent>
+        )}
+        <Modal isOpen={modalProps !== null} onClose={() => setModalProps(null)}>
+          <ModalContainer>
+            <Title size="2xl" isBold>
+              {redo}
+            </Title>
+            <Text>{modalProps?.modalMessage}</Text>
+            <ButtonGroup>
+              <Button variant="secondary" onClick={() => setModalProps(null)} isFullWidth>
+                {no}
+              </Button>
+              <Button
+                onClick={() => {
+                  setModalProps(null);
+                  navigate(modalProps?.to || '');
+                }}
+                isFullWidth
+              >
+                {yes}
+              </Button>
+            </ButtonGroup>
+          </ModalContainer>
+        </Modal>
+        {children}
       </ThemeProvider>
     </AppContext.Provider>
   );

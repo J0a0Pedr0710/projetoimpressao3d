@@ -1,8 +1,7 @@
-import type { IColorsKeys, ISizesKeys } from "theme";
+import type { IColorsKeys, ISizesKeys } from 'theme';
 
 declare module 'components' {
-
-type IIconStyle = {
+  type IIconStyle = {
     color?: IColorsKeys;
     size: ISizesKeys;
   };

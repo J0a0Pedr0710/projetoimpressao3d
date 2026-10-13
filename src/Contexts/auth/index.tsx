@@ -9,8 +9,8 @@ import { messages } from '@/assets/messages';
 import { AuthContext } from '@/constants/contexts';
 import { emptyUser } from '@/constants/emptyValues';
 import { useApp } from '@/contexts';
-import { usePersistedState } from '@/hooks/usePersistedState';
 import { authController } from '@/controllers/authController';
+import { usePersistedState } from '@/hooks/usePersistedState';
 
 export const AuthProvider = ({ children }: IProvider) => {
   const { openAlert, setLoading } = useApp();

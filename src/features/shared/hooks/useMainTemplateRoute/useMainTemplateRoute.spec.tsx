@@ -3,11 +3,7 @@ import type { ReactNode } from 'react';
 import { renderHook } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
-import {
-  cartRouteHandle,
-  dashboardRouteHandle,
-  homePage,
-} from '@/constants/mainTemplateRouteHandles';
+import { cartRouteHandle, homePage } from '@/constants/mainTemplateRouteHandles';
 import { MainTemplateProvider } from '@/contexts/mainTemplate';
 import { useMainTemplateRouteOverride } from '@/features/shared/hooks/useMainTemplateRouteOverride';
 
@@ -22,14 +18,6 @@ const createWrapper = (initialEntry: string) => {
   const Wrapper = ({ children }: { children: ReactNode }) => {
     const router = createMemoryRouter(
       [
-        {
-          path: '/dashboard',
-          handle: dashboardRouteHandle,
-          children: [
-            { index: true, element: children },
-            { path: 'representative', element: children },
-          ],
-        },
         {
           path: '/cart',
           handle: cartRouteHandle,

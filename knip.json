@@ -1,10 +1,8 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "tags": ["-lintignore"],
-  "ignoreFiles": [
-    ],
-  "ignoreDependencies": [
-    ],
+  "ignoreFiles": [],
+  "ignoreDependencies": [],
   "ignoreIssues": {
     "src/atomic/**": ["exports", "types"]
   }

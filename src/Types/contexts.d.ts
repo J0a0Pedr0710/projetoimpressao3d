@@ -1,7 +1,11 @@
-import type { IUser } from "models";
-import type { Dispatch, ReactNode, SetStateAction } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
 
-declare module "contexts" {
+import type { INotification, IProfile, IUser } from 'models';
+import type { IWalletMenuTransactions, IWalletTransactions } from 'props';
+
+import type { ETransactionStatus } from './enum';
+
+declare module 'contexts' {
   type IDispatch<T> = Dispatch<SetStateAction<T>>;
 
   type IProvider = {
@@ -35,7 +39,7 @@ declare module "contexts" {
     openNotifyDepartureModal: (message: string, to: string) => void;
     pathname: string;
   };
-  
+
   type IMainTemplateContext = {
     override: IMainTemplateRouteHandle;
     setOverride: (override: IMainTemplateRouteHandle) => void;
@@ -78,5 +82,39 @@ declare module "contexts" {
     setCartErrorMessage: IDispatch<string | null>;
     cartErrorTraceId: string | null;
     setCartErrorTraceId: IDispatch<string | null>;
+  };
+
+  type IProfileContext = {
+    notifications: INotification;
+    setNotifications: IDispatch<INotification>;
+    profile: IProfile;
+    setProfile: IDispatch<IProfile>;
+    profileUpdate: () => void;
+    imgProfile: string;
+    setProfileImg: IDispatch<string>;
+  };
+
+  type ITransactionContext = {
+    transactions: IWalletTransactions[];
+    setTransactionId: IDispatch<string>;
+    setTransactionStatus: IDispatch<ETransactionStatus | undefined>;
+    update: (id?: string) => void;
+    updateClientTransactions: (clientId: string) => void;
+    verifyPaymentStatus: (seconds: number) => void;
+    transactionStatus?: ETransactionStatus;
+    startDate: Date;
+    setStartDate: IDispatch<Date>;
+    endDate: Date;
+    setEndDate: IDispatch<Date>;
+    requestTransactionType: string;
+    setRequestTransactionType: IDispatch<string>;
+    requestTransactionStatus: string;
+    setRequestTransactionStatus: IDispatch<string>;
+    clear: () => void;
+    setClientId: IDispatch<string | undefined>;
+    walletMenuTransactions: IWalletMenuTransactions[];
+    setWalletMenuTransactions: IDispatch<IWalletMenuTransactions[]>;
+    updateTransactions: () => void;
+    isLoading: boolean;
   };
 }

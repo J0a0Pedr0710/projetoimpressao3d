@@ -129,16 +129,3 @@ export const ProfileButtonWrapper = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.size[1]};
 `;
-
-export const LevelBadge = styled.div`
-  position: absolute;
-  bottom: -12px;
-  left: 53%;
-  transform: translateX(-50%);
-
-  svg {
-    width: 20px;
-    height: 20px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-  }
-`;
