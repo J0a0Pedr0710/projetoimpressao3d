@@ -29,15 +29,41 @@ declare module 'theme' {
     green400: string;
     red400: string;
 
+    secondary50: string;
+    secondary100: string;
+    secondary200: string;
+    secondary300: string;
+    secondary400: string;
     secondary500: string;
+    secondary600: string;
+    secondary700: string;
+    secondary800: string;
+    secondary900: string;
+    secondary950: string;
 
+    tertiary50: string;
+    tertiary100: string;
+    tertiary200: string;
+    tertiary300: string;
+    tertiary400: string;
     tertiary500: string;
+    tertiary600: string;
+    tertiary700: string;
+    tertiary800: string;
+    tertiary900: string;
+    tertiary950: string;
 
+    blue50: string;
+    blue100: string;
+    blue200: string;
+    blue300: string;
     blue400: string;
     blue500: string;
     blue600: string;
     blue700: string;
     blue800: string;
+    blue900: string;
+    blue950: string;
 
     violet400: string;
     violet900: string;
