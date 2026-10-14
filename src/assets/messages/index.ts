@@ -52,6 +52,7 @@ export const messages = {
     wallet: 'Carteira',
     walletModalCurrentBalance: 'Saldo atual na carteira',
     cancel: 'Cancelar',
+    helpWhatsappMessages: `Boa tarde!\nEu te amo muito, meu amor! \nEstou com saudades de você.\n\nVocê poderia me ajudar?`,
   },
   countries: {
     AF: 'Afeganistão',
