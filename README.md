@@ -73,3 +73,14 @@ export default defineConfig([
 ])
 
 ```
+
+//.ENV
+SKIP_PREFLIGHT_CHECK=true
+VITE_APP_NODE_ENV=production
+VITE_IF_API_URL=http://127.0.0.1:3000
+VITE_APP_URL=http://127.0.0.1:3000
+#VITE_APP_URL=https://app.postaqui.log.br/apirest
+#VITE_APP_URL=https://app.postaquilogistica.com.br/apirest
+GENERATE_SOURCEMAP=false
+VITE_APP_PAGARME_KEY=pk_test_6GawByas5uGvBn5k
+VITE_WHATSAPP_NUMBER=553599931022
