@@ -4,16 +4,12 @@ import { useProfile } from '@/features/profile/hooks';
 import { Button } from '@/features/shared/atoms/button';
 
 export function Profile() {
-  const { handleHomeButton, fnViewPostageWhatsapp } = useProfile();
+  const { handleHomeButton } = useProfile();
   return (
     <div>
       <h1>Perfil 🏠</h1>
       <Button variant="secondary" isFullWidth onClick={handleHomeButton}>
-        <Link to="/">Ir para Home</Link>
-      </Button>
-
-      <Button variant="secondary" isFullWidth onClick={fnViewPostageWhatsapp}>
-        WhatsApp
+        <Link to="/sign-up">Ir para SignUp</Link>
       </Button>
     </div>
   );
