@@ -17,4 +17,4 @@ export const apiInterfreight = axios.create({
   baseURL: env.API_INTERFREIGHT,
 });
 
-apiInterfreight.interceptors.request.use((c) => config(c, '@postaqui.tokenUser'), error);
+apiInterfreight.interceptors.request.use((c) => config(c, '@projeto.tokenUser'), error);

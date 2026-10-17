@@ -1,4 +1,4 @@
-import { env } from '@/constants/env';
+import { env } from "@/constants/env";
 
 export const getWhatsappMessageLink = (message: string) => {
   const whatsappNumber = env.WHATSAPP_NUMBER;
