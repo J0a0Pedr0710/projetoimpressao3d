@@ -15,7 +15,7 @@ declare module 'tests' {
       | 'putForm'
       | 'patchForm';
     data: any;
-    instance?: 'apiPagarme' | 'apiInterfreight';
+    instance?: 'apiPagarme' | 'apiProject3DServer';
     error?: boolean;
   };
 }

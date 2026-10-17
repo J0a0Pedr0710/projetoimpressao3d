@@ -1,10 +1,10 @@
 import type { AxiosInstance } from 'axios';
 import type { IRequest } from 'tests';
 
-import { apiInterfreight } from '@/services/api';
+import { apiProject3DServer } from '@/services/api';
 import { apiPagarme } from '@/services/pagarme';
 
-export const apiMock = ({ method, data, error, instance = 'apiInterfreight' }: IRequest) => {
+export const apiMock = ({ method, data, error, instance = 'apiProject3DServer' }: IRequest) => {
   const response = {
     data,
     status: error ? 500 : 200,
@@ -12,7 +12,7 @@ export const apiMock = ({ method, data, error, instance = 'apiInterfreight' }: I
 
   const instances = {
     apiPagarme,
-    apiInterfreight,
+    apiProject3DServer,
   };
 
   const currentApi: AxiosInstance = instances[instance];
