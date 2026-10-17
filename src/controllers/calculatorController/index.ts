@@ -7,17 +7,17 @@ import type {
   IPaymentBuyerDetailsInputModel,
   IPaymentInputModel,
 } from 'props';
-import type { ICalculatorResponse, ICartItemResponse, ICheckoutResponse } from 'response';
 
-import { apiInterfreight } from '@/services/api';
+import type { ICalculatorResponse, ICartItemResponse, ICheckoutResponse } from '@/Types/response';
+import { apiProject3DServer } from '@/services/api';
 import { errorMessage } from '@/utils/services/errorMessage';
 
-const routeInterfreight = '/calculator';
+const routeProject3DServer = '/calculator';
 
 const getCartItems = () =>
   new Promise<ICartItemResponse>((resolve, reject) =>
-    apiInterfreight
-      .get(`${routeInterfreight}/cart`)
+    apiProject3DServer
+      .get(`${routeProject3DServer}/cart`)
       .then(({ data }) => resolve(data))
       .catch((error) => reject(errorMessage(error))),
   );
@@ -33,8 +33,8 @@ const addCreditWallet = (value: number) => {
   );
 
   return new Promise<ICartItemResponse>((resolve, reject) =>
-    apiInterfreight
-      .post(`${routeInterfreight}/cart/add`, formData, {
+    apiProject3DServer
+      .post(`${routeProject3DServer}/cart/add`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -46,8 +46,8 @@ const addCreditWallet = (value: number) => {
 
 const deleteItems = (items: string[]) =>
   new Promise<ICartItemResponse>((resolve, reject) =>
-    apiInterfreight
-      .delete(`${routeInterfreight}/cart`, {
+    apiProject3DServer
+      .delete(`${routeProject3DServer}/cart`, {
         data: {
           itemsIds: items,
         },
@@ -62,8 +62,8 @@ const checkout = (
   buyerDetails: IPaymentBuyerDetailsInputModel,
 ) =>
   new Promise<ICheckoutResponse>((resolve, reject) =>
-    apiInterfreight
-      .post(`${routeInterfreight}/cart/payment`, {
+    apiProject3DServer
+      .post(`${routeProject3DServer}/cart/payment`, {
         payment,
         items,
         buyerDetails,
@@ -78,8 +78,8 @@ const addShipping = (input: IAddShippingToCart) => {
   input.files.forEach((file) => formData.append('files', file));
 
   return new Promise<ICartItemResponse>((resolve, reject) =>
-    apiInterfreight
-      .post(`${routeInterfreight}/cart/add`, formData, {
+    apiProject3DServer
+      .post(`${routeProject3DServer}/cart/add`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -91,16 +91,16 @@ const addShipping = (input: IAddShippingToCart) => {
 
 const calculatePackage = (input: ICalculatorPackageRequest) =>
   new Promise<ICalculatorResponse>((resolve, reject) =>
-    apiInterfreight
-      .post(`${routeInterfreight}/simulate`, input)
+    apiProject3DServer
+      .post(`${routeProject3DServer}/simulate`, input)
       .then(({ data }) => resolve(data))
       .catch((error) => reject(errorMessage(error))),
   );
 
 const addCoupon = (coupon: string) =>
   new Promise<ICouponResponse>((resolve, reject) =>
-    apiInterfreight
-      .get(`${routeInterfreight}/coupon/${coupon}`)
+    apiProject3DServer
+      .get(`${routeProject3DServer}/coupon/${coupon}`)
       .then(({ data }) => resolve(data))
       .catch((error) => reject(errorMessage(error))),
   );
@@ -110,7 +110,7 @@ const generateQuotationDocument = (
   signal?: AbortSignal,
 ) =>
   new Promise<BlobPart>((resolve, reject) =>
-    apiInterfreight
+    apiProject3DServer
       .post('/representative/quotation', input, {
         responseType: 'blob',
         signal,
@@ -121,8 +121,8 @@ const generateQuotationDocument = (
 
 const saveMarkup = (markup: number) =>
   new Promise((resolve, reject) =>
-    apiInterfreight
-      .patch(`${routeInterfreight}/markup`, { markup })
+    apiProject3DServer
+      .patch(`${routeProject3DServer}/markup`, { markup })
       .then(({ data }) => resolve(data))
       .catch((error) => reject(errorMessage(error))),
   );

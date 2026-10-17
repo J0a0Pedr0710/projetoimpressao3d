@@ -1,5 +1,4 @@
-import type { IFormatDate } from 'response';
-
+import type { IFormatDate } from '@/Types/response';
 import { messages } from '@/assets/messages';
 import { countries } from '@/constants/countries';
 import { parseDateInput } from '@/utils/format/parseDateInput';

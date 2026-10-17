@@ -1,6 +1,6 @@
-import { useHelpWhatsapp } from "@/features/shared/hooks/useHelpWhatsapp";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
+import { useHelpWhatsapp } from '@/features/shared/hooks/useHelpWhatsapp';
 
 export const useSignUp = () => {
   const navigate = useNavigate();

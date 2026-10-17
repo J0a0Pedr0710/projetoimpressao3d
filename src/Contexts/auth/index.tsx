@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }: IProvider) => {
   }, [token]);
 
   useEffect(() => {
-    const allowRoutes = ['/sign-up/confirm', '/forgotPassword'];
+    const allowRoutes = ['/sign-up', '/sign-up/confirm', '/forgotPassword'];
     if (!token && !allowRoutes.includes(pathname)) {
       logout();
     }

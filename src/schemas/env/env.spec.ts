@@ -8,7 +8,7 @@ describe('envSchema validation', () => {
       WHATSAPP_NUMBER: '9999999999999',
       API_KEY_PAGARME: 'live_abc123',
       APP_ENV: 'production',
-      API_INTERFREIGHT: 'https://api.interfreight.com',
+      API_PROJECT3DSERVER: 'https://api.Project3DServer.com',
     });
     expect(parsed.success).toBe(true);
   });
@@ -31,7 +31,7 @@ describe('envSchema validation', () => {
   it('should accept when APP_ENV is missing (optional)', () => {
     const parsed = envSchema.safeParse({
       API_KEY_PAGARME: 'live_abc123',
-      API_INTERFREIGHT: 'https://api.interfreight.com',
+      API_PROJECT3DSERVER: 'https://api.Project3DServer.com',
       WHATSAPP_NUMBER: '9999999999999',
     });
     expect(parsed.success).toBe(true);
@@ -49,7 +49,7 @@ describe('envSchema validation', () => {
     const parsed = envSchema.safeParse({
       API_KEY_PAGARME: 'live_abc123',
       APP_ENV: 'dev-local',
-      API_INTERFREIGHT: 'https://api.interfreight.com',
+      API_PROJECT3DSERVER: 'https://api.Project3DServer.com',
       WHATSAPP_NUMBER: '9999999999999',
     });
     expect(parsed.success).toBe(true);

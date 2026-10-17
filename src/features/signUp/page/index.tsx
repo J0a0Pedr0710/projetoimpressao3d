@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import { Button } from '@/features/shared/atoms/button';
-
 import { useSignUp } from '@/features/signUp/hooks';
+
 import { Container } from './style';
 
 export const SignUp = () => {

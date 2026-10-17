@@ -13,8 +13,8 @@ const config = (config: InternalAxiosRequestConfig, localStorageKey: string) => 
 
 const error = (error: Error) => Promise.reject(error);
 
-export const apiInterfreight = axios.create({
-  baseURL: env.API_INTERFREIGHT,
+export const apiProject3DServer = axios.create({
+  baseURL: env.API_PROJECT3DSERVER,
 });
 
-apiInterfreight.interceptors.request.use((c) => config(c, '@projeto.tokenUser'), error);
+apiProject3DServer.interceptors.request.use((c) => config(c, '@projeto.tokenUser'), error);

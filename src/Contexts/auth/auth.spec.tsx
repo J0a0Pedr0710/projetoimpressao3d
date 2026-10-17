@@ -53,6 +53,14 @@ describe('AuthProvider context', () => {
     expect(result.current.isTokenValid).toBe(false);
   });
 
+  it('should allow unauthenticated users to access the sign-up route', () => {
+    MockValue(useLocation, { pathname: '/sign-up' });
+
+    setup();
+
+    expect(mockNavigate).not.toHaveBeenCalled();
+  });
+
   it('should update token when setToken is called with a valid token', async () => {
     vi.mocked(jwtDecode).mockReturnValue({
       exp: Date.now() / 1000 + 1000,
