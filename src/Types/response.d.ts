@@ -57,4 +57,14 @@ declare module 'response' {
     status: string;
     cartUpdated: ICartItem[];
   };
+
+  type IForgotPasswordResponse = {
+    success: boolean;
+    email: string;
+  };
+
+  type IUpdatePasswordResponse = {
+    success: boolean;
+    message: string;
+  };
 }

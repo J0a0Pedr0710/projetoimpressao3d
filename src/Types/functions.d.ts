@@ -20,4 +20,9 @@ declare module 'functions' {
     isScreenXl: boolean;
     isScreenXl2: boolean;
   };
+
+  type IFormatStringSize = {
+    text: string;
+    size: number;
+  };
 }
