@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { toPattern } from 'vanilla-masker';
 
-import type { IFile } from '@/Types/response';
+import type { IFile } from '@/types/response';
 import { formatFloat } from '@/utils/format/formatInteger';
 import { formatNumberToPrice } from '@/utils/format/formatPrice';
 

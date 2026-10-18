@@ -1,6 +1,6 @@
-import type { IFormatDate } from '@/Types/response';
 import { messages } from '@/assets/messages';
 import { countries } from '@/constants/countries';
+import type { IFormatDate } from '@/types/response';
 import { parseDateInput } from '@/utils/format/parseDateInput';
 
 export const dateToNumber = (dateString: Date): number => {

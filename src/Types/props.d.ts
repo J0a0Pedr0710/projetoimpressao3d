@@ -292,4 +292,19 @@ declare module 'props' {
     itens: IPackageFormItem[];
     itensFiles: IFile[];
   };
+
+  type IUseForgotPassword = {
+    email: string;
+  };
+
+  type IUseUpdatePassword = {
+    email: string;
+    confirmCode: string;
+    newPassword: string;
+  };
+
+  type IRecoerPassword = {
+    newPassword: string;
+    confirmNewPassword: string;
+  };
 }

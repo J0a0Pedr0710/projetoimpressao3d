@@ -8,8 +8,8 @@ import type {
   IPaymentInputModel,
 } from 'props';
 
-import type { ICalculatorResponse, ICartItemResponse, ICheckoutResponse } from '@/Types/response';
 import { apiProject3DServer } from '@/services/api';
+import type { ICalculatorResponse, ICartItemResponse, ICheckoutResponse } from '@/types/response';
 import { errorMessage } from '@/utils/services/errorMessage';
 
 const routeProject3DServer = '/calculator';

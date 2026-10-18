@@ -1,7 +1,7 @@
 import type { ISignin } from 'props';
 
-import type { ISigninResponse } from '@/Types/response';
 import { apiProject3DServer } from '@/services/api';
+import type { ISigninResponse } from '@/types/response';
 import { errorMessage } from '@/utils/services/errorMessage';
 
 const routeIF = '/sign-in';

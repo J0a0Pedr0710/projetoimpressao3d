@@ -25,6 +25,10 @@ export const messages = {
     tokenInvalid: 'O Token é inválido.',
     errorAddCreditWallet: 'Não foi possível adicionar crédito à carteira',
     monetaryValue: 'Valor mínimo ',
+    passValidationErrorMessage:
+      'A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.',
+    invalidMail: 'Email inválido',
+    ForgotPasswordError: 'Erro ao tentar recuperar a senha',
   },
   success: { successAddCreditWallet: 'Crédito adicionado com sucesso' },
   texts: {
@@ -53,6 +57,7 @@ export const messages = {
     walletModalCurrentBalance: 'Saldo atual na carteira',
     cancel: 'Cancelar',
     helpWhatsappMessages: `Boa tarde!\nEu te amo muito, meu amor! \nEstou com saudades de você.\n\nVocê poderia me ajudar?`,
+    passwordNotMatch: 'As senhas não coincidem',
   },
   countries: {
     AF: 'Afeganistão',
