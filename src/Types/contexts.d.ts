@@ -96,7 +96,7 @@ declare module 'contexts' {
 
   type ISignUpContext = {
     userEmailForConfirmation: string | null;
-    setUserEmail: (email: string, country: string) => void;
+    setUserEmail: (email: string) => void;
     clearUserEmail: () => void;
   };
 

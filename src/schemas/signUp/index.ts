@@ -16,7 +16,7 @@ const {
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
-export const shcema = z
+export const schema = z
   .object({
     acceptTerms: z.boolean(),
     firstName: z
@@ -71,7 +71,7 @@ const defaultValues = {
   confirmationCode: '',
 };
 
-const resolver = zodResolver(shcema);
+const resolver = zodResolver(schema);
 
 export const signUpSchema = {
   resolver,

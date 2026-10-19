@@ -17,4 +17,4 @@ export const apiProject3DServer = axios.create({
   baseURL: env.API_PROJECT3DSERVER,
 });
 
-apiProject3DServer.interceptors.request.use((c) => config(c, '@projeto.tokenUser'), error);
+apiProject3DServer.interceptors.request.use((c) => config(c, '@project.tokenUser'), error);
