@@ -6,11 +6,13 @@ import type {
   ICartContext,
   IMainTemplateContext,
   IProfileContext,
+  ISignUpContext,
   ITransactionContext,
 } from 'contexts';
 
 export const AuthContext = createContext({} as IAuthContext);
 export const AppContext = createContext({} as IAppContext);
+export const SignUpContext = createContext({} as ISignUpContext);
 export const MainTemplateContext = createContext({} as IMainTemplateContext);
 export const CartContext = createContext({} as ICartContext);
 export const ProfileContext = createContext({} as IProfileContext);

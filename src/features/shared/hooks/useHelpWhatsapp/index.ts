@@ -1,5 +1,5 @@
 import { messages } from '@/assets/messages';
-import { getWhatsappMessageLink } from '@/utils/services/sendWhatsappMessage copy';
+import { getWhatsappMessageLink } from '@/utils/services/sendWhatsappMessage';
 
 export const useHelpWhatsapp = () => {
   const { helpWhatsappMessages } = messages.texts;

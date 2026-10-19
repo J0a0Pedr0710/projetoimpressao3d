@@ -6,14 +6,24 @@ import {
   CartContext,
   MainTemplateContext,
   ProfileContext,
+  SignUpContext,
   TransactionContext,
 } from '@/constants/contexts';
 
 const useApp = () => useContext(AppContext);
 const useAuth = () => useContext(AuthContext);
+const useSignUpContext = () => useContext(SignUpContext);
 const useMainTemplateContext = () => useContext(MainTemplateContext);
 const useCart = () => useContext(CartContext);
 const useProfile = () => useContext(ProfileContext);
 const useTransactionContext = () => useContext(TransactionContext);
 
-export { useApp, useAuth, useMainTemplateContext, useCart, useProfile, useTransactionContext };
+export {
+  useApp,
+  useAuth,
+  useMainTemplateContext,
+  useCart,
+  useProfile,
+  useTransactionContext,
+  useSignUpContext,
+};

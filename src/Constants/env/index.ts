@@ -4,7 +4,7 @@ const getEnv = () => {
   const envVariables = {
     API_KEY_PAGARME: import.meta.env.VITE_APP_PAGARME_KEY,
     APP_ENV: import.meta.env.VITE_APP_NODE_ENV,
-    API_PROJECT3DSERVER: import.meta.env.VITE_IF_API_URL,
+    API_PROJECT3DSERVER: import.meta.env.VITE_PS_API_URL,
     WHATSAPP_NUMBER: import.meta.env.VITE_WHATSAPP_NUMBER,
   };
 

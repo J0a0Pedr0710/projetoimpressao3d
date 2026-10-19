@@ -25,4 +25,9 @@ declare module 'functions' {
     text: string;
     size: number;
   };
+
+  type IAdvancedInclude = {
+    value: string[] | string;
+    search: string;
+  };
 }

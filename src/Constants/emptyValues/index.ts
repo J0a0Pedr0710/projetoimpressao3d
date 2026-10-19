@@ -1,8 +1,11 @@
+import type { ISignIn } from 'props';
+
 export const emptyUser = {
   accessType: '',
   email: '',
   exp: 0,
-  fullName: '',
+  firstName: '',
+  lastName: '',
   iat: 0,
   isActive: false,
   isCompany: false,
@@ -10,4 +13,9 @@ export const emptyUser = {
   isMain: false,
   registerNumber: '',
   userId: '',
+};
+
+export const emptySignIn: ISignIn = {
+  email: '',
+  password: '',
 };

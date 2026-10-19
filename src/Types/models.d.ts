@@ -2,7 +2,8 @@ declare module 'models' {
   type IUser = {
     email: string;
     exp: number;
-    fullName: string;
+    firstName: string;
+    lastName: string;
     iat: number;
     isActive: boolean;
     isMain: boolean;

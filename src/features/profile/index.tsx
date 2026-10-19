@@ -9,7 +9,7 @@ export function Profile() {
     <div>
       <h1>Perfil 🏠</h1>
       <Button variant="secondary" isFullWidth onClick={handleHomeButton}>
-        <Link to="/sign-up">Ir para SignUp</Link>
+        <Link to="/sign-in">Ir para SignUp</Link>
       </Button>
     </div>
   );

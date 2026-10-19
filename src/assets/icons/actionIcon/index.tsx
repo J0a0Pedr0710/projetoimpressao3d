@@ -1,7 +1,7 @@
 import type { IIconStyle } from 'components';
 import { useTheme } from 'styled-components';
 
-export const ActionIcon = ({ color, size, ...props }: IIconStyle) => {
+export const actionIcon = ({ color, size, ...props }: IIconStyle) => {
   const theme = useTheme();
 
   return (

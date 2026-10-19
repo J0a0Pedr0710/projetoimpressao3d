@@ -1,4 +1,4 @@
-import { ActionIcon } from '@/assets/icons/actionIcon';
+import { actionIcon } from '@/assets/icons/actionIcon';
 import { alertErrorBadge } from '@/assets/icons/alertErrorBadge';
 import { arrowDownFilled } from '@/assets/icons/arrowDownFilled';
 import { arrowUp } from '@/assets/icons/arrowUp';
@@ -6,12 +6,18 @@ import { arrowUpSquare } from '@/assets/icons/arrowUpSquare';
 import { bell } from '@/assets/icons/bell';
 import { calendar } from '@/assets/icons/calendar';
 import { cart } from '@/assets/icons/cart';
+import { check } from '@/assets/icons/check';
 import { checkBadge } from '@/assets/icons/checkBadge';
 import { chevronDown } from '@/assets/icons/chevronDown';
 import { chevronLeft } from '@/assets/icons/chevronLeft';
 import { chevronRight } from '@/assets/icons/chevronRight';
 import { chevronUp } from '@/assets/icons/chevronUp';
+import { emailConfirm } from '@/assets/icons/emailConfirm';
+import { emailVerified } from '@/assets/icons/emailVerified';
 import { errorCircle } from '@/assets/icons/errorCircle';
+import { eye } from '@/assets/icons/eye';
+import { googleIcon } from '@/assets/icons/googleIcon';
+import { hiddenEye } from '@/assets/icons/hiddenEye';
 import { inIcon } from '@/assets/icons/in';
 import { info } from '@/assets/icons/info';
 import { listRadio } from '@/assets/icons/listRadio';
@@ -28,7 +34,7 @@ import { whatsapp } from '@/assets/icons/whatsapp';
 import { x } from '@/assets/icons/x';
 
 export const ProjetoIcons = {
-  ActionIcon,
+  actionIcon,
   alertErrorBadge,
   checkBadge,
   info,
@@ -56,4 +62,10 @@ export const ProjetoIcons = {
   chevronUp,
   chevronDown,
   errorCircle,
+  emailConfirm,
+  emailVerified,
+  googleIcon,
+  hiddenEye,
+  eye,
+  check,
 };

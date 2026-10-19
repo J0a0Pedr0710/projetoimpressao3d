@@ -15,9 +15,9 @@ import { usePersistedState } from '@/hooks/usePersistedState';
 export const AuthProvider = ({ children }: IProvider) => {
   const { openAlert, setLoading } = useApp();
 
-  const [token, setToken] = usePersistedState<string | undefined>('@postaqui.tokenUser', undefined);
+  const [token, setToken] = usePersistedState<string | undefined>('@projeto.tokenUser', undefined);
 
-  const [user, setUser] = usePersistedState<IUser>('@postaqui.user', emptyUser);
+  const [user, setUser] = usePersistedState<IUser>('@project.user', emptyUser);
   const [isTokenValid, setIsTokenValid] = useState<boolean>(false);
   const { authError } = messages.error;
   const { pathname } = useLocation();
@@ -76,7 +76,12 @@ export const AuthProvider = ({ children }: IProvider) => {
   }, [token]);
 
   useEffect(() => {
-    const allowRoutes = ['/sign-up', '/sign-up/confirm', '/forgotPassword'];
+    const allowRoutes = [
+      '/sign-up',
+      '/sign-up/confirm',
+      '/sign-up/email-verified',
+      '/forgotPassword',
+    ];
     if (!token && !allowRoutes.includes(pathname)) {
       logout();
     }
