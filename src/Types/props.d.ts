@@ -3,9 +3,23 @@ import type { ReactNode } from 'react';
 import type { ETypeDocuments } from '@/types/enum';
 
 declare module 'props' {
-  type ISignin = {
+  type ISignIn = {
     email: string;
     password: string;
+  };
+
+  type ISignUp = {
+    acceptTerms: boolean;
+    country: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    document: {
+      typeDocument: ETypeDocuments;
+      valueDocument: string;
+    };
+    repeatPassword: string;
   };
 
   type IElement = {
@@ -306,5 +320,15 @@ declare module 'props' {
   type IRecoerPassword = {
     newPassword: string;
     confirmNewPassword: string;
+  };
+
+  type IConfirmAccountPayload = {
+    email: string;
+    code: string;
+  };
+
+  type IRecoverPassword = {
+    newPassword: string;
+    confirmPassword: string;
   };
 }

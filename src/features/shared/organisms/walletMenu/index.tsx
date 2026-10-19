@@ -6,16 +6,12 @@ import { Icon } from '@/features/shared/atoms/icons';
 import { Menu } from '@/features/shared/atoms/menu';
 import { Text } from '@/features/shared/atoms/text';
 import { Title } from '@/features/shared/atoms/title';
-import { EmptyWalletMenu } from '@/features/shared/molecules/emptyWalletMenu';
 import { WalletButton } from '@/features/shared/molecules/walletButton';
-import { WalletMenuFooter } from '@/features/shared/molecules/walletFooter';
-import { WalletModalForm } from '@/features/shared/organisms/walletModalForm';
 import { formatNumberToPrice } from '@/utils/format/formatPrice';
 
 import { DateWrapper, WalletMenuButtonWrapper, WalletMenuWrapper } from './style';
 
 export const WalletMenu = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { isScreenMd } = useApp();
@@ -59,10 +55,7 @@ export const WalletMenu = () => {
               ))}
             </>
           ))}
-        {hasWalletMenuTransactions && <WalletMenuFooter setIsModalOpen={setIsModalOpen} />}
-        {!hasWalletMenuTransactions && <EmptyWalletMenu setIsModalOpen={setIsModalOpen} />}
       </WalletMenuWrapper>
-      <WalletModalForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </Menu>
   );
 };

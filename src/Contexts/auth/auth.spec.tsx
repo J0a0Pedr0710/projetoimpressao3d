@@ -82,10 +82,10 @@ describe('AuthProvider context', () => {
     const { result } = setup();
 
     act(() => {
-      result.current.setUser({ userId: '1', fullName: 'John' } as IUser);
+      result.current.setUser({ userId: '1', firstName: 'John', lastName: 'Doe' } as IUser);
     });
 
-    expect(result.current.user).toEqual({ userId: '1', fullName: 'John' });
+    expect(result.current.user).toEqual({ userId: '1', firstName: 'John', lastName: 'Doe' });
   });
 
   it('should invalidate token when token is expired', async () => {

@@ -1,8 +1,10 @@
 import type { ICartItem } from 'models';
 import type { IFreight, IPackageCalculator } from 'props';
 
+import type { ETypeDocuments } from '@/types/enum';
+
 declare module 'response' {
-  type ISigninResponse = {
+  type ISignInResponse = {
     token: string;
     confirmed?: boolean;
   };
@@ -66,5 +68,19 @@ declare module 'response' {
   type IUpdatePasswordResponse = {
     success: boolean;
     message: string;
+  };
+
+  type ISignUpResponse = {
+    created: boolean;
+  };
+
+  type IConfirmAccountResponse = {
+    confirmed: boolean;
+    token: string;
+  };
+
+  type IFormatDocumentByType = {
+    document: string;
+    type: ETypeDocuments;
   };
 }

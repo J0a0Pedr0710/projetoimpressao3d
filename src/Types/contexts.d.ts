@@ -94,6 +94,12 @@ declare module 'contexts' {
     setProfileImg: IDispatch<string>;
   };
 
+  type ISignUpContext = {
+    userEmailForConfirmation: string | null;
+    setUserEmail: (email: string, country: string) => void;
+    clearUserEmail: () => void;
+  };
+
   type ITransactionContext = {
     transactions: IWalletTransactions[];
     setTransactionId: IDispatch<string>;

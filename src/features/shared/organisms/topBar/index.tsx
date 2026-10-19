@@ -4,7 +4,6 @@ import { NotificationsMenu } from '@/features/shared/molecules/notificationMenu'
 import { ProfileOptionsMenu } from '@/features/shared/molecules/profileOptionsMenu';
 import { TopBarMenu } from '@/features/shared/molecules/topBarMenu';
 import { TopBarNoMenu } from '@/features/shared/molecules/topBarNoMenu';
-import { WalletMenu } from '@/features/shared/organisms/walletMenu';
 import { usePermission } from '@/hooks/usePermission';
 
 import { Divider, TopBarWrapper, UserSectionWrapper } from './style';
@@ -27,7 +26,6 @@ export const TopBar = ({ mobileUserSectionIsVisible, shouldRenderUserSection = t
 
       {renderUserSection && (
         <UserSectionWrapper>
-          {renderWalletMenu && <WalletMenu />}
           {renderWalletMenu && <Divider />}
           <NotificationsMenu />
           <CartMenu />
