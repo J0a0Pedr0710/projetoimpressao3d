@@ -12,7 +12,8 @@ import { SignInPage } from '@/features/register/pages/signInPage';
 import { SignUpPage } from '@/features/register/pages/signUpPage';
 
 export const routeConfig: RouteObject[] = [
-  { path: '/', element: <SignInPage /> },
+  { path: '/', element: <Home /> },
+  { path: '/sign-in', element: <SignInPage /> },
   {
     path: '/forgot-password',
     children: [
@@ -29,7 +30,7 @@ export const routeConfig: RouteObject[] = [
       { path: 'email-verified', element: <EmailVerifiedPage /> },
     ],
   },
+
   { path: '/sobre', element: <About /> },
   { path: '/profile', element: <Profile /> },
-  { path: '/home', element: <Home /> },
 ];

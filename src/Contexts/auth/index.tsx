@@ -15,7 +15,7 @@ import { usePersistedState } from '@/hooks/usePersistedState';
 export const AuthProvider = ({ children }: IProvider) => {
   const { openAlert, setLoading } = useApp();
 
-  const [token, setToken] = usePersistedState<string | undefined>('@projeto.tokenUser', undefined);
+  const [token, setToken] = usePersistedState<string | undefined>('@project.tokenUser', undefined);
 
   const [user, setUser] = usePersistedState<IUser>('@project.user', emptyUser);
   const [isTokenValid, setIsTokenValid] = useState<boolean>(false);
@@ -58,30 +58,21 @@ export const AuthProvider = ({ children }: IProvider) => {
   }, [token, checkTokenValidity]);
 
   useEffect(() => {
-    if (token) {
-      setLoading(true);
-      authController
-        .verifyToken()
-        .then(() => {
-          setIsTokenValid(true);
-        })
-        .catch((errorMessage) => {
-          if (isTokenValid) {
-            openAlert(errorMessage ?? authError, 'error');
-          }
-          logout();
-        })
-        .finally(() => setLoading(false));
-    }
+    if (!token) return;
+
+    setLoading(true);
+    authController
+      .verifyToken()
+      .then(() => setIsTokenValid(true))
+      .catch((errorMessage) => {
+        openAlert(errorMessage ?? authError, 'error');
+        logout();
+      })
+      .finally(() => setLoading(false));
   }, [token]);
 
   useEffect(() => {
-    const allowRoutes = [
-      '/sign-up',
-      '/sign-up/confirm',
-      '/sign-up/email-verified',
-      '/forgotPassword',
-    ];
+    const allowRoutes = ['/sign-up/confirm', '/forgotPassword'];
     if (!token && !allowRoutes.includes(pathname)) {
       logout();
     }
