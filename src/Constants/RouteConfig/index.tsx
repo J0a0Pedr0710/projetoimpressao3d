@@ -8,10 +8,11 @@ import { EmailConfirmPage } from '@/features/register/pages/emailConfirmPage';
 import { EmailVerifiedPage } from '@/features/register/pages/emailVerifiedPage';
 import { ForgotPasswordPage } from '@/features/register/pages/forgotPasswordPage';
 import { RecoverPasswordPage } from '@/features/register/pages/recoverPasswordPage';
+import { SignInPage } from '@/features/register/pages/signInPage';
 import { SignUpPage } from '@/features/register/pages/signUpPage';
 
 export const routeConfig: RouteObject[] = [
-  { path: '/', element: <Home /> },
+  { path: '/', element: <SignInPage /> },
   {
     path: '/forgot-password',
     children: [
@@ -30,4 +31,5 @@ export const routeConfig: RouteObject[] = [
   },
   { path: '/sobre', element: <About /> },
   { path: '/profile', element: <Profile /> },
+  { path: '/home', element: <Home /> },
 ];

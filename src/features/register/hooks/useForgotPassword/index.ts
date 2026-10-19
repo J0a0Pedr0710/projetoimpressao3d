@@ -62,7 +62,7 @@ export const useForgotPassword = () => {
 export const useUpdatePassword = () => {
   const [searchParams] = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassqord, setShowConfirmPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const code = searchParams.get('code');
   const unformattedEmail = searchParams.get('email') || '';
@@ -131,7 +131,7 @@ export const useUpdatePassword = () => {
     onSubmit,
     handleCancelButton,
     showPassword,
-    showConfirmPassqord,
+    showConfirmPassword,
     onClickAdornment,
     onClickConfirmAdornment,
   };

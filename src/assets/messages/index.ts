@@ -63,6 +63,9 @@ export const messages = {
     sessionExpired: 'Sessão expirada',
     unknownError: 'Ocorreu um erro inesperado',
     tryAgainLater: 'Por favor, tente novamente mais tarde',
+    ForgotPasswordError: 'Erro ao recuperar senha',
+    UpdatePasswordError: 'Erro ao atualizar senha',
+    acceptTerms: 'É necessário aceitar os termos e condições',
   },
   success: {
     successAddCreditWallet: 'Crédito adicionado com sucesso',
