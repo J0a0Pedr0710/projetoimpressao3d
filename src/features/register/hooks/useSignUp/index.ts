@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { jwtDecode } from 'jwt-decode';
 import type { IUser } from 'models';
-import type { ISignUp } from 'props';
+import type { ISignUp } from '@/types/props';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ import { useApp, useAuth, useSignUpContext } from '@/contexts';
 import { signUpController } from '@/controllers/signUpController';
 import type { SignUpFormData } from '@/features/register/hooks/useSignUp/types';
 import { signUpSchema } from '@/schemas/signUp';
-import { ETypeDocuments } from '@/types/enum';
 
 export const useSignUp = () => {
   const { openAlert, setLoading } = useApp();
@@ -31,11 +30,7 @@ export const useSignUp = () => {
     clearErrors,
   } = useForm<SignUpFormData>(signUpSchema);
 
-  const {
-    country,
-    document: { typeDocument },
-    confirmationCode,
-  } = watch();
+  const { confirmationCode } = watch();
 
   const navigate = useNavigate();
 
@@ -43,14 +38,12 @@ export const useSignUp = () => {
     setLoading(true);
     signUpController
       .signUpUser(data)
-      .then((response) => {
-        console.log('[signUpUser] success:', response);
+      .then(() => {
         setUserEmail(data.email);
         navigate('/sign-up/confirm');
         setTimeout(() => setLoading(false), 200);
       })
       .catch((error) => {
-        console.log('[signUpUser] error:', error);
         if (typeof error === 'string') {
           openAlert(error, 'error');
           setLoading(false);
@@ -70,15 +63,6 @@ export const useSignUp = () => {
 
   const { invalidConfirmCode, sessionExpired, unknownError, tryAgainLater } = messages.error;
   const { newCodeSent } = messages.success;
-
-  useEffect(() => {
-    if (country) {
-      const defaultDocType = country === 'BR' ? ETypeDocuments.CNPJ : ETypeDocuments.CPF;
-      setValue('document.typeDocument', defaultDocType);
-      setValue('document.valueDocument', '');
-      clearErrors('document.valueDocument');
-    }
-  }, [country, setValue, clearErrors]);
 
   useEffect(() => {
     let intervalId: number | null = null;
@@ -120,7 +104,6 @@ export const useSignUp = () => {
         code: confirmationCode,
       })
       .catch((error) => {
-        console.log('[confirmAccount] error:', error);
         const errorMessage = typeof error === 'string' ? error : unknownError;
         setError('confirmationCode', {
           type: 'manual',
@@ -199,8 +182,6 @@ export const useSignUp = () => {
     control,
     onSubmit,
     errors,
-    country,
-    typeDocument,
     setValue,
     confirmationCode,
     isLoading,

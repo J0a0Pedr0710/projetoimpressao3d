@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import type { IAuthContext, IProvider } from 'contexts';
+import type { IAuthContext, IProvider } from '@/types/contexts';
 import { jwtDecode } from 'jwt-decode';
 import type { IUser } from 'models';
 import { useLocation, useNavigate } from 'react-router-dom';

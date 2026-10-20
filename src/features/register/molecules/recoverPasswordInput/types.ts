@@ -1,4 +1,4 @@
-import type { IRecoverPassword } from 'props';
+import type { IRecoverPassword } from '@/types/props';
 import type { Control, FieldErrors } from 'react-hook-form';
 
 export type IRecoverPasswordInputs = {

@@ -6,7 +6,7 @@ export type IButton = ComponentProps<'button'> & {
   variant?: 'primary' | 'secondary' | 'tertiary';
   isFullWidth?: boolean;
   isLoading?: boolean;
-  allowContextSkeleton?: boolean;
+  isSkeleton?: boolean;
   cursor?: 'pointer' | 'not-allowed' | 'default';
 };
 

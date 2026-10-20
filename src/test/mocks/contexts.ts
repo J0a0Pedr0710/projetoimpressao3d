@@ -1,4 +1,4 @@
-import type { IAppContext, IAuthContext, ICartContext } from 'contexts';
+import type { IAppContext, IAuthContext, ICartContext } from '@/types/contexts';
 
 import { projectFaker } from '../common/faker';
 import { mockUser } from './models';

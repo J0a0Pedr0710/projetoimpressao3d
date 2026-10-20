@@ -13,7 +13,7 @@ export const TopBarMenu = () => {
       </button>
       <LogoWrapper>
         <img
-          src="https://plublic-postaqui-images.s3.us-east-1.amazonaws.com/images/logo-postaqui-roxo-539x214.png"
+          src="https://3d-project-image.s3.us-east-1.amazonaws.com/Project-3D-Images/logo.webp"
           alt=""
         />
       </LogoWrapper>

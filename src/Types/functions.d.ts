@@ -30,4 +30,14 @@ declare module 'functions' {
     value: string[] | string;
     search: string;
   };
+
+  type IVerifyCep = {
+    cep: string;
+    shortCountry: string;
+  };
+
+  type IFormatPhoneNumber = {
+    phone: string | undefined;
+    shortCountry: string;
+  };
 }

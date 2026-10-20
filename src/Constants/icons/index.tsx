@@ -1,4 +1,4 @@
-import type { IIconStyle } from 'components';
+import type { IIconStyle } from '@/types/components';
 
 import { ProjetoIcons } from '@/assets/icons';
 import { Flag } from '@/features/shared/atoms/flag';

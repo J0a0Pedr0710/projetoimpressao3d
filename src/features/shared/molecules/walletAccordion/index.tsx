@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import type { IWalletAccordionChipProps } from 'props';
+import type { IWalletAccordionChipProps } from '@/types/props';
 
 import { WalletAccordionTypeProps } from '@/constants/walletAccordionTypeProps';
 import { walletIcons } from '@/constants/walletIcons';

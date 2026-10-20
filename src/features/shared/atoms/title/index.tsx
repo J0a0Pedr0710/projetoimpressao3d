@@ -1,5 +1,3 @@
-import { useApp } from '@/contexts';
-
 import { StyledText } from './style';
 import type { ITitle } from './types';
 
@@ -10,13 +8,9 @@ export const Title = ({
   isBold = false,
   textAlign,
   isLoading = false,
-  allowContextSkeleton = false,
   skeletonWidth,
   ...props
 }: ITitle) => {
-  const { loading } = useApp();
-  const contextIsLoading = loading && allowContextSkeleton;
-
   return (
     <StyledText
       {...props}
@@ -24,7 +18,7 @@ export const Title = ({
       $isBold={isBold}
       $size={size ?? 'md'}
       $textColor={textColor ?? 'neutral900'}
-      $isLoading={isLoading || contextIsLoading}
+      $isLoading={isLoading}
       $skeletonWidth={skeletonWidth}
     >
       {children}

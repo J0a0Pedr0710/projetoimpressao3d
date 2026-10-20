@@ -1,4 +1,4 @@
-import type { ISignIn } from 'props';
+import type { ISignIn } from '@/types/props';
 
 import { apiProject3DServer } from '@/services/api';
 import type { ISignInResponse } from '@/types/response';

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useUpdatePassword } from '@/features/register/hooks/useForgotPassword';
 import { RecoverPasswordActions } from '@/features/register/molecules/recoverPasswordButtons';
 import { RecoverPasswordInput } from '@/features/register/molecules/recoverPasswordInput';
-import { GridItem } from '@/features/shared/atoms/gridItem';
+import { GridItem } from '@/features/shared/molecules/gridItem';
 import { PasswordRulesDisplay } from '@/features/shared/molecules/passwordRulesDisplay';
 
 import { RecoverPasswordContainer } from './style';

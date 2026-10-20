@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import type { IAppContext, IProvider } from 'contexts';
-import type { INotifyDepartureProps } from 'props';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { DefaultTheme } from 'styled-components';
@@ -18,6 +16,8 @@ import { Title } from '@/features/shared/atoms/title';
 import { Alert } from '@/features/shared/molecules/alert';
 import type { IAlert } from '@/features/shared/molecules/alert/types';
 import { GlobalStyle, defaultScreen, defaultTheme, sideBarScreen } from '@/styles';
+import type { IAppContext, IProvider } from '@/types/contexts';
+import type { INotifyDepartureProps } from '@/types/props';
 
 import { AlertContent, ButtonGroup, ModalContainer } from './style';
 
@@ -61,20 +61,23 @@ export const AppProvider = ({ children }: IProvider) => {
     setAlertProps((prevAlertProps) => prevAlertProps.filter(({ id }) => id !== uniqueId));
   };
 
-  const openAlert = (message: string, type: 'success' | 'error' | 'warning' | 'info' | 'link') => {
-    const uniqueId = uuid();
-    setAlertProps((prevAlertProps) => [
-      ...prevAlertProps,
-      {
-        id: uniqueId,
-        message,
-        type,
-        onClose: () => onCloseAlert(uniqueId),
-        time: 3000,
-        isClose: true,
-      },
-    ]);
-  };
+  const openAlert = useCallback(
+    (message: string, type: 'success' | 'error' | 'warning' | 'info' | 'link') => {
+      const uniqueId = uuid();
+      setAlertProps((prevAlertProps) => [
+        ...prevAlertProps,
+        {
+          id: uniqueId,
+          message,
+          type,
+          onClose: () => onCloseAlert(uniqueId),
+          time: 3000,
+          isClose: true,
+        },
+      ]);
+    },
+    [],
+  );
 
   const openNotifyDepartureModal = (message: string, to: string) => {
     setModalProps({

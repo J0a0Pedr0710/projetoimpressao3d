@@ -1,4 +1,4 @@
-import type { IWalletAccordionChipProps } from 'props';
+import type { IWalletAccordionChipProps } from '@/types/props';
 import { Link } from 'react-router-dom';
 
 import { messages } from '@/assets/messages';

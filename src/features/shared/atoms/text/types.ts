@@ -22,7 +22,6 @@ export type IText = ComponentProps<'span'> & {
   display?: 'flex' | 'inline';
   isLoading?: boolean;
   isItalic?: boolean;
-  allowContextSkeleton?: boolean;
   skeletonWidth?: ISizesKeys;
   isLight?: boolean;
 };

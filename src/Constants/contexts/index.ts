@@ -8,7 +8,7 @@ import type {
   IProfileContext,
   ISignUpContext,
   ITransactionContext,
-} from 'contexts';
+} from '@/types/contexts';
 
 export const AuthContext = createContext({} as IAuthContext);
 export const AppContext = createContext({} as IAppContext);
