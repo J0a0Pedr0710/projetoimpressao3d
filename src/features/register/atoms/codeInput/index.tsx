@@ -1,8 +1,7 @@
 import { type ChangeEvent, useRef } from 'react';
 
-import { Code } from '@/features/register/atoms/codeInput/style';
+import { Code, Container } from '@/features/register/atoms/codeInput/style';
 import type { ICodeInput } from '@/features/register/atoms/codeInput/types';
-import { Container } from '@/features/shared/molecules/breadCrumb/style';
 import { formatStringSize } from '@/utils/format/formatStringSize';
 
 export const CodeInput = ({ length, onChange, value, error, ...props }: ICodeInput) => {

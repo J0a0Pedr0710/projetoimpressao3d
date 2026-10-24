@@ -30,8 +30,8 @@ describe('useUpdatePassword', () => {
     const { result } = renderHook(() => useUpdatePassword());
 
     await act(async () => {
-      result.current.setValue('newPassword', '@Postaqui26');
-      result.current.setValue('confirmPassword', '@Postaqui26');
+      result.current.setValue('newPassword', 'Jop110022!');
+      result.current.setValue('confirmPassword', 'Jop110022!');
     });
 
     await act(async () => {
@@ -49,8 +49,8 @@ describe('useUpdatePassword', () => {
     const { result } = renderHook(() => useUpdatePassword());
 
     await act(async () => {
-      result.current.setValue('newPassword', '@Postaqui26');
-      result.current.setValue('confirmPassword', '@Postaqui26');
+      result.current.setValue('newPassword', 'Jop110022!');
+      result.current.setValue('confirmPassword', 'Jop110022!');
     });
 
     await act(async () => {
@@ -74,8 +74,8 @@ describe('useUpdatePassword', () => {
     const { result } = renderHook(() => useUpdatePassword());
 
     await act(async () => {
-      result.current.setValue('newPassword', '@Postaqui26');
-      result.current.setValue('confirmPassword', '@Postaqui26');
+      result.current.setValue('newPassword', 'Jop110022!');
+      result.current.setValue('confirmPassword', 'Jop110022!');
     });
 
     await act(async () => {

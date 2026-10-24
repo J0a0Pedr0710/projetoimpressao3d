@@ -1,7 +1,8 @@
 import type { Dispatch, ReactNode, SetStateAction } from 'react';
 
 import type { INotification, IProfile, IUser } from 'models';
-import type { IWalletMenuTransactions, IWalletTransactions } from 'props';
+
+import type { IWalletMenuTransactions, IWalletTransactions } from '@/types/props';
 
 import type { ETransactionStatus } from './enum';
 
@@ -90,6 +91,7 @@ declare module 'contexts' {
     profile: IProfile;
     setProfile: IDispatch<IProfile>;
     profileUpdate: () => void;
+    removeProfileAddress: () => Promise<boolean>;
     imgProfile: string;
     setProfileImg: IDispatch<string>;
   };

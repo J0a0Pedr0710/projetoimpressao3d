@@ -1,5 +1,5 @@
-import type { IUseForgotPassword, IUseUpdatePassword } from 'props';
-import type { IForgotPasswordResponse, IUpdatePasswordResponse } from 'response';
+import type { IUseForgotPassword, IUseUpdatePassword } from '@/types/props';
+import type { IForgotPasswordResponse, IUpdatePasswordResponse } from '@/types/response';
 
 import { apiProject3DServer } from '@/services/api';
 import { errorMessage } from '@/utils/services/errorMessage';

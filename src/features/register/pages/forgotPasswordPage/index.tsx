@@ -1,7 +1,7 @@
 import { ForgotPasswordForm } from '@/features/register/organisms/forgotPasswordForm';
 import { LoginTemplate } from '@/features/register/templates/loginTemplate';
-import { GridContainer } from '@/features/shared/atoms/gridContainer';
-import { GridItem } from '@/features/shared/atoms/gridItem';
+import { GridContainer } from '@/features/shared/molecules/gridContainer';
+import { GridItem } from '@/features/shared/molecules/gridItem';
 
 export const ForgotPasswordPage = () => {
   return (

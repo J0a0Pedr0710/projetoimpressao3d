@@ -10,7 +10,7 @@ export function About() {
     <div>
       <h1>Sobre Nós ℹ️</h1>
       <Button variant="secondary" isFullWidth onClick={handleProfileButton}>
-        <Link to="/profile">Voltar para Perfil</Link>
+        <Link to="/sign-in">Voltar para Perfil</Link>
       </Button>
     </div>
   );

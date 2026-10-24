@@ -1,4 +1,4 @@
-import type { IBill, IBuyerDetails, IBuyerDetailsAddress, IPix } from 'props';
+import type { IBill, IBuyerDetails, IBuyerDetailsAddress, IPix } from '@/types/props';
 
 import { ETypeDocuments } from '@/types/enum';
 

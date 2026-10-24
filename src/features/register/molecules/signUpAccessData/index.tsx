@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { messages } from '@/assets/messages';
-import { GridItem } from '@/features/shared/atoms/gridItem';
+import { GridItem } from '@/features/shared/molecules/gridItem';
 import { Icon } from '@/features/shared/atoms/icons';
 import { Title } from '@/features/shared/atoms/title';
 import { ControlInput } from '@/features/shared/molecules/controlInput';

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { jwtDecode } from 'jwt-decode';
 import type { IUser } from 'models';
-import type { ISignIn } from 'props';
+import type { ISignIn } from '@/types/props';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 

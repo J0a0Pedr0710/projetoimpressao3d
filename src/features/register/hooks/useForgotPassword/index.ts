@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { IUseForgotPassword, IUseUpdatePassword } from 'props';
+import type { IUseForgotPassword, IUseUpdatePassword } from '@/types/props';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 

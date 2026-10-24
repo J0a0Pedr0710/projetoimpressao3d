@@ -1,4 +1,4 @@
-import type { IElement } from 'props';
+import type { IElement } from '@/types/props';
 
 import type { ETransactionStatus } from '@/types/enum';
 

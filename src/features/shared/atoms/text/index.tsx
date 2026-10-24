@@ -1,5 +1,3 @@
-import { useApp } from '@/contexts';
-
 import { StyledText } from './style';
 import type { IText } from './types';
 
@@ -12,15 +10,10 @@ export const Text = ({
   textDecoration,
   display,
   isLoading = false,
-  allowContextSkeleton = false,
   skeletonWidth,
   isLight = false,
   ...props
 }: IText) => {
-  const { loading } = useApp();
-
-  const contextIsLoading = loading && allowContextSkeleton;
-
   return (
     <StyledText
       $textAlign={textAlign ?? 'left'}
@@ -29,7 +22,7 @@ export const Text = ({
       $textColor={textColor ?? 'neutral900'}
       $textDecoration={textDecoration ?? 'none'}
       $display={display ?? 'flex'}
-      $isLoading={isLoading || contextIsLoading}
+      $isLoading={isLoading}
       $skeletonWidth={skeletonWidth}
       $isLight={isLight}
       $isItalic={isItalic ?? false}

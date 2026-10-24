@@ -1,4 +1,4 @@
-import type { IElement } from 'props';
+import type { IElement } from '@/types/props';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '@/contexts';

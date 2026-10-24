@@ -9,7 +9,6 @@ import { apiMock } from '@/test/common/apiMock';
 import { projectFaker } from '@/test/common/faker';
 import { MockImport, MockValue } from '@/test/common/importMock';
 import { mockAppContext, mockAuthContext } from '@/test/mocks/contexts';
-import { ETypeDocuments } from '@/types/enum';
 
 import { useSignUp } from '.';
 
@@ -53,12 +52,7 @@ describe('useSignUp', () => {
       result.current.setValue('email', 'test@test.com');
       result.current.setValue('password', exaplePw);
       result.current.setValue('repeatPassword', exaplePw);
-      result.current.setValue('country', 'BR');
       result.current.setValue('acceptTerms', true);
-      result.current.setValue('document', {
-        typeDocument: ETypeDocuments.CNPJ,
-        valueDocument: projectFaker.custom.cnpj({ formatted: true }),
-      });
     });
 
     await act(async () => {
@@ -85,12 +79,7 @@ describe('useSignUp', () => {
       result.current.setValue('email', 'test@test.com');
       result.current.setValue('password', exaplePw);
       result.current.setValue('repeatPassword', exaplePw);
-      result.current.setValue('country', 'BR');
       result.current.setValue('acceptTerms', true);
-      result.current.setValue('document', {
-        typeDocument: ETypeDocuments.CNPJ,
-        valueDocument: projectFaker.custom.cnpj({ formatted: true }),
-      });
     });
 
     await act(async () => {
@@ -112,12 +101,7 @@ describe('useSignUp', () => {
       result.current.setValue('password', exaplePw);
       result.current.setValue('repeatPassword', exaplePw);
       result.current.setValue('acceptTerms', true);
-      result.current.setValue('country', 'BR');
       result.current.setValue('acceptTerms', true);
-      result.current.setValue('document', {
-        typeDocument: ETypeDocuments.CNPJ,
-        valueDocument: projectFaker.custom.cnpj({ formatted: true }),
-      });
     });
 
     await act(async () => {

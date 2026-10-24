@@ -1,3 +1,3 @@
-import type { ISideBarOptions } from 'props';
+import type { ISideBarOptions } from '@/types/props';
 
 export const defaultSidebarOptions: ISideBarOptions[] = [];

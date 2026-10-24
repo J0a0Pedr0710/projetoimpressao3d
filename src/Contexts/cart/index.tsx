@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { IProvider } from 'contexts';
+import type { IProvider } from '@/types/contexts';
 import type { ICartItem } from 'models';
 
 import { CartContext } from '@/constants/contexts';

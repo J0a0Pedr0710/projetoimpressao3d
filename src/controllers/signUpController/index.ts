@@ -1,5 +1,5 @@
-import type { IConfirmAccountPayload, ISignUp } from 'props';
-import type { IConfirmAccountResponse, ISignUpResponse } from 'response';
+import type { IConfirmAccountPayload, ISignUp } from '@/types/props';
+import type { IConfirmAccountResponse, ISignUpResponse } from '@/types/response';
 
 import { apiProject3DServer } from '@/services/api';
 import { errorMessage } from '@/utils/services/errorMessage';

@@ -35,7 +35,7 @@ export const ProfileOptionsMenu = () => {
   const { preferences } = messages.titles;
   const { out, help, helpWhatsappMessage, contactUs } = messages.texts;
 
-  const fullname = profile ? `${profile.fullName}` : '';
+  const fullname = [profile?.firstName, profile?.lastName].filter(Boolean).join(' ');
   const userEmail = profile?.email || '';
   const fullNameSize = fullname.length;
 

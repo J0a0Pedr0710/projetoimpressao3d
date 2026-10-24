@@ -1,4 +1,4 @@
-import type { IIconStyle } from 'components';
+import type { IIconStyle } from '@/types/components';
 import { useTheme } from 'styled-components';
 
 export const triangleExclamationFilled = ({ color, size, ...props }: IIconStyle) => {
