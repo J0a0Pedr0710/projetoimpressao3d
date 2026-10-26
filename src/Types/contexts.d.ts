@@ -94,6 +94,8 @@ declare module 'contexts' {
     removeProfileAddress: () => Promise<boolean>;
     imgProfile: string;
     setProfileImg: IDispatch<string>;
+    setDefaultAddress: (addressId: string) => Promise<boolean>;
+    removeAddress: (addressId: string) => Promise<boolean>;
   };
 
   type ISignUpContext = {

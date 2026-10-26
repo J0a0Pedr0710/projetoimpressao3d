@@ -89,6 +89,7 @@ export const messages = {
     newCodeSent: 'Novo código enviado com sucesso',
     successEdit: 'Alterações salvas com sucesso!',
     addressRemoved: 'Endereço removido com sucesso!',
+    addressSetAsDefault: 'Endereço definido como padrão com sucesso!',
   },
   texts: {
     noNotifications: 'Você não possui notificações',

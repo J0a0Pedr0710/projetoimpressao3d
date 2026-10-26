@@ -8,7 +8,7 @@ import type {
   IProfilePersonalDataInputModel,
 } from 'props';
 import { type FieldPath, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import type { ILocationZipCodeResponse } from 'response';
 
 import { messages } from '@/assets/messages';
@@ -33,6 +33,7 @@ import { verifyDocumentByType } from '@/utils/verify/verifyDocuments';
 export const useProfileForm = () => {
   const { unknownError, invalidDocument } = messages.error;
   const navigate = useNavigate();
+  const { addressId } = useParams<{ addressId: string }>();
 
   const {
     control,
@@ -69,17 +70,24 @@ export const useProfileForm = () => {
   useEffect(() => {
     if (profile?.address && token) {
       setLoading(false);
+
+      const addressToLoad = addressId
+        ? profile.addresses?.find((addr) => addr.id === addressId)
+        : profile.address;
+
+      if (!addressToLoad) return;
+
       setFormValues(setValue, {
         address: {
           country,
-          number: profile.address.number,
-          street: profile.address.street,
-          cep: getCountryMask(brazilCountry.short)(profile.address.cep),
-          city: profile.address.city,
-          complement: profile.address.complement,
-          neighborhood: profile.address.neighborhood,
-          state: profile.address.state,
-          stateAbbreviation: profile.address.shortState || profile.address.state,
+          number: addressToLoad.number,
+          street: addressToLoad.street,
+          cep: getCountryMask(brazilCountry.short)(addressToLoad.cep),
+          city: addressToLoad.city,
+          complement: addressToLoad.complement,
+          neighborhood: addressToLoad.neighborhood,
+          state: addressToLoad.state,
+          stateAbbreviation: addressToLoad.shortState || addressToLoad.state,
         },
         documents: profile.documents
           .filter(
@@ -103,7 +111,7 @@ export const useProfileForm = () => {
         }),
       });
     }
-  }, [profile]);
+  }, [profile, addressId]);
 
   useEffect(() => {
     const fields = [
@@ -190,8 +198,11 @@ export const useProfileForm = () => {
     updateProfile: () => void,
   ) => {
     setLoading(true);
-    profileController
-      .updateProfile(data)
+    const updateCall = addressId
+      ? profileController.updateProfileAddress(addressId, data as IProfileAddressDataInputModel)
+      : profileController.updateProfile(data);
+
+    updateCall
       .then(() => {
         openAlert(messages.success.successEdit, 'success');
         updateProfile();
