@@ -152,6 +152,36 @@ export const ProfileProvider = ({ children }: IProvider) => {
     }
   };
 
+  const setDefaultAddress = async (addressId: string) => {
+    setLoading(true);
+    try {
+      await profileController.setDefaultAddress(addressId);
+      openAlert(messages.success.addressSetAsDefault, 'success');
+      await loadProfile();
+      return true;
+    } catch (error) {
+      openAlert(typeof error === 'string' ? error : messages.error.unknownError, 'error');
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const removeAddress = async (addressId: string) => {
+    setLoading(true);
+    try {
+      await profileController.removeAddress(addressId);
+      openAlert(messages.success.addressRemoved, 'success');
+      await loadProfile();
+      return true;
+    } catch (error) {
+      openAlert(typeof error === 'string' ? error : messages.error.unknownError, 'error');
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <ProfileContext.Provider
       value={{
@@ -163,6 +193,8 @@ export const ProfileProvider = ({ children }: IProvider) => {
         removeProfileAddress,
         imgProfile,
         setProfileImg,
+        setDefaultAddress,
+        removeAddress,
       }}
     >
       {children}

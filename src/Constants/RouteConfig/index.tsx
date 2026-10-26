@@ -47,7 +47,7 @@ export const routeConfig: RouteObject[] = [
     children: [
       { index: true, element: <ProfilePage /> },
       {
-        path: 'address',
+        path: 'address/:addressId',
         element: <ProfileAddressPageEdit />,
         handle: profileAddressRouteHandle,
       },

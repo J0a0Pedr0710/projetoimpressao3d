@@ -24,3 +24,11 @@ export const getDefaultProfileAddress = <T extends { isDefault?: boolean }>(addr
 
   return addresses.find(({ isDefault }) => isDefault);
 };
+
+export const sortAddresses = <T extends { isDefault?: boolean }>(addresses: T[]) => {
+  return [...addresses].sort((a, b) => {
+    if (a.isDefault && !b.isDefault) return -1;
+    if (!a.isDefault && b.isDefault) return 1;
+    return 0;
+  });
+};
