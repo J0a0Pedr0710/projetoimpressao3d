@@ -15,6 +15,4 @@ export enum EPermissions {
 export enum ETypeDocuments {
   CPF = 'CPF',
   CNPJ = 'CNPJ',
-  PASSPORT = 'PASSPORT',
-  RUC_DNI_CE = 'RUC_DNI_CE',
 }

@@ -1,4 +1,4 @@
-import type { ISignUp } from 'props';
+import type { ISignUp } from '@/types/props';
 import type { Control, FieldErrors, UseFormClearErrors, UseFormWatch } from 'react-hook-form';
 
 export type ISignUpAccessData = {

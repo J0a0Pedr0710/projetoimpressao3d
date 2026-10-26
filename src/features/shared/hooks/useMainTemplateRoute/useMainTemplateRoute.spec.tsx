@@ -3,7 +3,12 @@ import type { ReactNode } from 'react';
 import { renderHook } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
-import { cartRouteHandle, homePage } from '@/constants/mainTemplateRouteHandles';
+import {
+  cartRouteHandle,
+  homePage,
+  profileAddressRouteHandle,
+  profileRouteHandle,
+} from '@/constants/mainTemplateRouteHandles';
 import { MainTemplateProvider } from '@/contexts/mainTemplate';
 import { useMainTemplateRouteOverride } from '@/features/shared/hooks/useMainTemplateRouteOverride';
 
@@ -33,6 +38,17 @@ const createWrapper = (initialEntry: string) => {
             mobileUserSectionIsVisible: false,
           },
           element: children,
+        },
+        {
+          path: '/profile',
+          handle: profileRouteHandle,
+          children: [
+            {
+              path: 'address',
+              handle: profileAddressRouteHandle,
+              element: children,
+            },
+          ],
         },
         { path: '/icons', element: children },
       ],
@@ -95,6 +111,15 @@ describe('useMainTemplateRoute', () => {
     expect(result.current.pages).toEqual(cartRouteHandle.pages);
     expect(result.current.actualPage).toBe(cartRouteHandle.actualPage);
     expect(result.current.mobileUserSectionIsVisible).toBe(false);
+  });
+
+  it('should use the page breadcrumb from a nested route handle', () => {
+    const { result } = renderHook(() => useMainTemplateRoute(), {
+      wrapper: createWrapper('/profile/address'),
+    });
+
+    expect(result.current.pages).toEqual(profileAddressRouteHandle.pages);
+    expect(result.current.actualPage).toBe(profileAddressRouteHandle.actualPage);
   });
 
   it('should override route handle values with props', () => {

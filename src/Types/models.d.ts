@@ -12,9 +12,24 @@ declare module 'models' {
     userId: string;
   };
 
+  type IAddress = {
+    id?: string;
+    isDefault?: boolean;
+    cep: string;
+    city: string;
+    complement?: string;
+    country: string;
+    neighborhood: string;
+    number: string;
+    shortState: string;
+    state: string;
+    street: string;
+  };
+
   type IProfile = {
     id: string;
     address: IAddress;
+    addresses?: IAddress[];
     wallet: number;
     active: boolean;
     name: string;
@@ -23,14 +38,13 @@ declare module 'models' {
     access: string;
     telephone: string;
     ddi: string;
-    documents: [
-      {
-        typeDocument: ETypeDocuments;
-        valueDocument: string;
-      },
-    ];
+    documents: {
+      typeDocument: ETypeDocuments | null;
+      valueDocument: string | null;
+    }[];
     createdAt: Date;
-    fullName: string;
+    firstName: string;
+    lastName: string;
     tokenAPI?: string;
   };
 
@@ -62,5 +76,13 @@ declare module 'models' {
     carrier?: string;
     enableCheck?: boolean;
     isLoadingItem?: boolean;
+  };
+
+  type IProductCartItem = {
+    productId: string;
+    quantity: number;
+    price: number;
+    name: string;
+    imgUrl?: string;
   };
 }

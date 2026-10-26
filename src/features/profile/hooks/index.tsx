@@ -4,7 +4,7 @@ export const useProfile = () => {
   const navigate = useNavigate();
 
   function handleHomeButton() {
-    navigate('/sign-up');
+    navigate('/sign-in');
   }
 
   return {

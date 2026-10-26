@@ -1,6 +1,6 @@
 import { messages } from '@/assets/messages';
 import { Button } from '@/features/shared/atoms/button';
-import { GridItem } from '@/features/shared/atoms/gridItem';
+import { GridItem } from '@/features/shared/molecules/gridItem';
 
 import type { ISignUpButtonsActions } from './types';
 

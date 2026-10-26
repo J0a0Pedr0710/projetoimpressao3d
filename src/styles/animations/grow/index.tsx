@@ -1,4 +1,4 @@
-import type { IGrow } from 'animations';
+import type { IGrow } from '@/types/animations';
 
 import { GrowWrapper } from './style';
 

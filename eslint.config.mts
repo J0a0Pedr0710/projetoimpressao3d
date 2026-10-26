@@ -18,6 +18,18 @@ const srcApplicationFiles = ['src/**/*.{ts,tsx}'];
 
 const srcApplicationIgnores = ['**/*.{spec,test}.{ts,tsx}', 'src/test/**'];
 
+const baseImportRestrictions = [
+  {
+    group: ['..', '../', '../*', '../**'],
+    message: 'Relative parent imports (..) are not allowed. Use @/ alias instead.',
+  },
+  {
+    group: ['@/**/index'],
+    message:
+      'Do not import from /index. Use the module path directly (e.g. @/features/shared/molecules/select).',
+  },
+];
+
 const importRules = {
   'import/first': 'warn',
   'import/newline-after-import': 'warn',
@@ -26,17 +38,7 @@ const importRules = {
   '@typescript-eslint/no-restricted-imports': [
     'error',
     {
-      patterns: [
-        {
-          group: ['..', '../', '../*', '../**'],
-          message: 'Relative parent imports (..) are not allowed. Use @/ alias instead.',
-        },
-        {
-          group: ['@/**/index'],
-          message:
-            'Do not import from /index. Use the module path directly (e.g. @/features/shared/molecules/select).',
-        },
-      ],
+      patterns: [...baseImportRestrictions],
     },
   ],
 } as const;
@@ -166,6 +168,95 @@ export default defineConfig([
     },
 
     rules: importRules,
+  },
+
+  {
+    files: ['src/features/**/atoms/**/*.{ts,tsx}'],
+
+    rules: {
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...baseImportRestrictions,
+            {
+              group: ['@/contexts', '@/contexts/**'],
+              message: 'Atoms must receive application state through props.',
+            },
+            {
+              group: [
+                '@/features/**/molecules/**',
+                '@/features/**/organisms/**',
+                '@/features/**/templates/**',
+                '@/features/**/pages/**',
+              ],
+              message: 'Atoms cannot depend on higher Atomic Design layers.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  {
+    files: ['src/features/**/molecules/**/*.{ts,tsx}'],
+
+    rules: {
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...baseImportRestrictions,
+            {
+              group: [
+                '@/features/**/organisms/**',
+                '@/features/**/templates/**',
+                '@/features/**/pages/**',
+              ],
+              message: 'Molecules cannot depend on higher Atomic Design layers.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  {
+    files: ['src/features/**/organisms/**/*.{ts,tsx}'],
+
+    rules: {
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...baseImportRestrictions,
+            {
+              group: ['@/features/**/templates/**', '@/features/**/pages/**'],
+              message: 'Organisms cannot depend on templates or pages.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  {
+    files: ['src/features/**/templates/**/*.{ts,tsx}'],
+
+    rules: {
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            ...baseImportRestrictions,
+            {
+              group: ['@/features/**/pages/**'],
+              message: 'Templates cannot depend on pages.',
+            },
+          ],
+        },
+      ],
+    },
   },
 
   {

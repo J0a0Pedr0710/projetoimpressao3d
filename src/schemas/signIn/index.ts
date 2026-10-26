@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { ISignIn } from 'props';
+import type { ISignIn } from '@/types/props';
 import z from 'zod';
 
 import { messages } from '@/assets/messages';

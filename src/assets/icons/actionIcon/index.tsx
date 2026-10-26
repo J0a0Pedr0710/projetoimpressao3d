@@ -1,4 +1,4 @@
-import type { IIconStyle } from 'components';
+import type { IIconStyle } from '@/types/components';
 import { useTheme } from 'styled-components';
 
 export const actionIcon = ({ color, size, ...props }: IIconStyle) => {

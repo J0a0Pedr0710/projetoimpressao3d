@@ -10,15 +10,10 @@ declare module 'props' {
 
   type ISignUp = {
     acceptTerms: boolean;
-    country: string;
     firstName: string;
     lastName: string;
     email: string;
     password: string;
-    document: {
-      typeDocument: ETypeDocuments;
-      valueDocument: string;
-    };
     repeatPassword: string;
   };
 
@@ -59,28 +54,6 @@ declare module 'props' {
     countryCode?: string;
   };
 
-  type IWalletAccordionChipProps = {
-    chip?: {
-      backgroundColor: IColorsKeys;
-      borderColor: IColorsKeys;
-      color: IColorsKeys;
-      message: string;
-    };
-    borderColor?: string;
-    backgroundColor?: string;
-    iconColor?: IColorsKeys;
-  };
-
-  type IWalletMenuTransactions = {
-    date: string;
-    transactions: IWalletButtonBase[];
-  };
-
-  type IWalletTransactions = {
-    date: string;
-    transactions: (IWalletPostageAccordion | IWalletCreditAccordion)[];
-  };
-
   type IPix = {
     amount: number;
     codeUrl: string;
@@ -115,119 +88,33 @@ declare module 'props' {
     neighborhood: string;
   };
 
-  type IWalletInput = {
-    value: string;
-  };
-
-  type IAddShippingToCartOrigin = {
-    name: string;
-    email: string;
-    document: {
-      typeDocument: string;
-      valueDocument: string;
-    };
-    phone: string;
-    cep: string;
-    state: string;
-    city: string;
-    neighborhood?: string;
-    street: string;
-    number: string;
-    complement?: string;
-    country: string;
-  };
-
-  type IAddShippingToCartDestiny = {
-    name: string;
-    email: string;
-    document: {
-      typeDocument: string;
-      valueDocument: string;
-    };
-    phone: string;
-    cep: string;
-    state: string;
-    city: string;
-    neighborhood?: string;
-    street: string;
-    number: string;
-    complement?: string;
-    country: string;
-  };
-
-  type IAddShippingToCartBroker = IAddShippingToCartOrigin & {
-    companyName?: string;
-    codePhone: string;
-  };
-
-  type IAddShippingToCartInformationPost = {
-    shippingId: string;
-    shippingName: string;
-    modality: string;
-    cepOrigin: string;
-    cepDestiny: string;
-    countryOrigin: string;
-    countryDestiny: string;
-    reverseLogistic: boolean;
-    residential: boolean;
-    ar: boolean;
-    ownHands: boolean;
-  };
-
-  type IAddShippingToCartBody = {
-    type: string;
-    origin: IAddShippingToCartOrigin;
-    destiny: IAddShippingToCartDestiny;
-    broker?: IAddShippingToCartBroker;
-    informationPost: IAddShippingToCartInformationPost;
-    cacheKey: string;
-    acceptedTerms: boolean;
-    deletedFileKeys?: string[];
-  };
-
-  type IAddShippingToCart = {
-    body: IAddShippingToCartBody;
-    files: File[];
-  };
-
-  type ICalculatorPackageRequest = {
-    countryOrigin: string;
-    countryDestiny: string;
-    zipCodeOrigin: string | null;
-    zipCodeDestiny: string | null;
-    reverseLogistic: boolean;
-    ar: boolean;
-    ownHands: boolean;
-    residential: boolean;
-  };
-
   type ICartItemsInputModel = {
     _id: string;
     type: string;
+  };
+
+  type IAddProductToCart = {
+    productId: string;
+    quantity: number;
+  };
+
+  type ICreateOrderAddress = {
+    cep: string;
+    street: string;
+    number: string;
+    complement?: string;
+    neighborhood: string;
+    city: string;
+    state: string;
   };
 
   type ICouponResponse = {
     discount: number;
   };
 
-  type IGenerateQuotationDocumentRequest = {
-    countryOrigin: string | null;
-    countryDestiny: string | null;
-    zipCodeOrigin: string | null;
-    zipCodeDestiny: string | null;
-    packages: {
-      packageName: string;
-      length: number;
-      width: number;
-      height: number;
-      weight: number;
-      valueSafe: number;
-    }[];
-  };
-
   type IDocuments = {
-    typeDocument: ETypeDocuments;
-    valueDocument: string;
+    typeDocument: ETypeDocuments | null;
+    valueDocument: string | null;
   };
 
   type IPaymentBuyerDetailsInputModel = {
@@ -268,45 +155,6 @@ declare module 'props' {
     };
   };
 
-  type IFreight = {
-    carrier: string;
-    modality: string;
-    deadline: string;
-    economy: string;
-    freightPrice?: string;
-    price: string;
-    modalityId: string;
-    disabled: boolean;
-  };
-
-  type IPackageCalculator = {
-    zipCodeDestiny: string | null;
-    zipCodeOrigin: string | null;
-    countryDestiny: string | null;
-    countryOrigin: string | null;
-    totalLength: number;
-    totalWidth: number;
-    totalHeight: number;
-    totalWeight: number;
-    totalSafeValue: number;
-    packages: IPackage[];
-    minorFreightRateId: string | null;
-  };
-
-  type IPackage = {
-    name: string;
-    length: number;
-    width: number;
-    height: number;
-    weight: number;
-    safeValue?: number;
-    nfKey: string;
-    nfNumber: string;
-    status: 'toDo' | 'inProgress' | 'done' | 'error';
-    itens: IPackageFormItem[];
-    itensFiles: IFile[];
-  };
-
   type IUseForgotPassword = {
     email: string;
   };
@@ -330,5 +178,59 @@ declare module 'props' {
   type IRecoverPassword = {
     newPassword: string;
     confirmPassword: string;
+  };
+
+  type IProfileDataInputModel = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    ddi?: string;
+    telephone?: string;
+    birth_date?: string | Date;
+    imgProfile?: string;
+    confirm_account?: boolean;
+    active?: string;
+    address?: {
+      cep?: string;
+      city?: string;
+      state?: string;
+      street?: string;
+      number?: string;
+      complement?: string | null;
+      neighborhood?: string;
+      country: string;
+      short_state?: string;
+    };
+    documents: IDocuments[];
+  };
+
+  type IProfilePersonalDataInputModel = Pick<
+    IProfileDataInputModel,
+    'firstName' | 'lastName' | 'email' | 'documents'
+  >;
+
+  type IProfileAddressDataInputModel = {
+    telephone: string;
+    address: {
+      cep: string;
+      city: string;
+      state: string;
+      street: string;
+      number: string;
+      complement: string;
+      neighborhood: string;
+      country: string;
+    };
+  };
+
+  type IColorPickerMenuProps = {
+    color: string;
+    setColor: (color: string) => void;
+    onSetColors: (color: string, color2: string) => void;
+  };
+
+  type IDocumentsOptions = {
+    label: string;
+    value: ETypeDocuments;
   };
 }

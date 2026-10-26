@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import type { IMainTemplateRouteHandle } from 'props';
+import type { IMainTemplateRouteHandle } from '@/types/props';
 
 import { useMainTemplateContext } from '@/contexts';
 

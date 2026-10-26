@@ -10,7 +10,6 @@ export type ITruncate = ComponentProps<'span'> & {
   size?: 'lg' | 'md' | 'sm' | 'xs';
   width?: ISizesKeys;
   isLoading?: boolean;
-  allowContextSkeleton?: boolean;
 };
 
 export type IStyleTruncate = {

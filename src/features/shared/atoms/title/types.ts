@@ -11,7 +11,6 @@ export type ITitle = ComponentProps<'span'> & {
   textAlign?: 'center' | 'end' | 'justify' | 'left' | 'right' | 'start';
   width?: ISizesKeys;
   isLoading?: boolean;
-  allowContextSkeleton?: boolean;
   skeletonWidth?: ISizesKeys;
 };
 

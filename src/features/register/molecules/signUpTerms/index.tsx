@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { messages } from '@/assets/messages';
 import { useApp } from '@/contexts';
-import { GridItem } from '@/features/shared/atoms/gridItem';
+import { GridItem } from '@/features/shared/molecules/gridItem';
 import { Checkbox } from '@/features/shared/molecules/checkbox';
 
 import { ContentTerm, ContentTermsColumn } from './style';

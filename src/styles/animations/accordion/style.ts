@@ -1,4 +1,4 @@
-import type { IGrowStyle } from 'animations';
+import type { IGrowStyle } from '@/types/animations';
 import styled, { css, keyframes } from 'styled-components';
 
 const open = keyframes`

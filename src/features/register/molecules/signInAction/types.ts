@@ -1,4 +1,4 @@
-import type { ISignIn } from 'props';
+import type { ISignIn } from '@/types/props';
 import type { Control, FieldErrors } from 'react-hook-form';
 
 export type ISignInAction = {

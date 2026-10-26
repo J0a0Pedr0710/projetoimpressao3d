@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import type { IMainTemplateContext, IProvider } from 'contexts';
-import type { IMainTemplateRouteHandle } from 'props';
+import type { IMainTemplateContext, IProvider } from '@/types/contexts';
+import type { IMainTemplateRouteHandle } from '@/types/props';
 
 import { MainTemplateContext } from '@/constants/contexts';
 

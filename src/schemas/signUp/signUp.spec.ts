@@ -6,17 +6,15 @@ import { ETypeDocuments } from '@/types/enum';
 import { schema } from '.';
 
 const createValidData = (overrides = {}) => ({
-  name: 'João da Silva',
+  firstName: 'João',
+  lastName: 'da Silva',
   email: 'teste@email.com',
   password: 'Senha@123',
   repeatPassword: 'Senha@123',
-  country: 'Brasil',
   acceptTerms: true,
-  ddi: 'BR',
-  telephone: '11987654321',
   document: {
     typeDocument: ETypeDocuments.CPF,
-    valueDocument: '123.456.789-09',
+    valueDocument: '390.533.447-05',
   },
   ...overrides,
 });
@@ -111,10 +109,10 @@ describe('signUpSchema', () => {
     expect(issue?.message).toBe(messages.error.invalidDocument);
   });
 
-  it('should fail if country is too short', () => {
-    const result = schema.safeParse(createValidData({ country: 'B' }));
-    const issue = result.error?.issues.find((i) => i.path.includes('country'));
-    expect(issue?.message).toBe(messages.error.minChar(2));
+  it('should validate and omit country from signup data', () => {
+    const result = schema.parse(createValidData({ country: 'Brasil' }));
+
+    expect(result).not.toHaveProperty('country');
   });
 
   it('should fail if email exceeds max length', () => {

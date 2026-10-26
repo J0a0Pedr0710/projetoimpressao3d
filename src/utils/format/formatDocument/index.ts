@@ -1,4 +1,4 @@
-import type { IFormatDocumentByType } from 'response';
+import type { IFormatDocumentByType } from '@/types/response';
 import { toPattern } from 'vanilla-masker';
 
 import { MASK_CNPJ, MASK_CPF } from '@/constants/mask';

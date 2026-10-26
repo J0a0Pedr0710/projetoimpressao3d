@@ -1,4 +1,4 @@
-import type { IElement } from 'props';
+import type { IElement } from '@/types/props';
 
 import type { IMainTemplateRouteProps } from '@/features/shared/hooks/useMainTemplateRoute/types';
 

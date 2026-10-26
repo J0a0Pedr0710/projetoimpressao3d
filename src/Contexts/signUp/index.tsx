@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
-import type { ISignUpContext } from 'contexts';
+import type { ISignUpContext } from '@/types/contexts';
 
 import { SignUpContext } from '@/constants/contexts';
 

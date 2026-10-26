@@ -1,7 +1,7 @@
-import type { ICartItem } from 'models';
-import type { IFreight, IPackageCalculator } from 'props';
+import type { ICartItem, INotification, IProductCartItem } from 'models';
 
 import type { ETypeDocuments } from '@/types/enum';
+import type { IDocuments } from '@/types/props';
 
 declare module 'response' {
   type ISignInResponse = {
@@ -31,20 +31,40 @@ declare module 'response' {
     street: string;
     neighborhood: string;
     stateAbbreviation: string;
-    ibgeCode?: string | null;
-  };
-
-  type ICalculatorResponse = {
-    allFreight: IFreight[];
-    alerts: string[];
-    packageInfo: IPackageCalculator;
-    locationOrigin: ICepResponse;
-    locationDestiny: ICepResponse;
-    cacheKey: string;
   };
 
   type ICartItemResponse = {
     cart: ICartItem[];
+  };
+
+  type IProductCartResponse = {
+    cart: IProductCartItem[];
+  };
+
+  type ICreateOrderResponse = {
+    order: {
+      id: string;
+      userId: string;
+      shippingAddress: {
+        cep: string;
+        street: string;
+        number: string;
+        complement: string | null;
+        neighborhood: string;
+        city: string;
+        state: string;
+      };
+      items: Array<{
+        productId: string;
+        quantity: number;
+        price: number;
+        name: string;
+        imgUrl: string | null;
+      }>;
+      total: number;
+      status: 'pending' | 'paid' | 'canceled';
+      created_at: string | null;
+    };
   };
 
   type ICheckoutResponse = {
@@ -58,6 +78,42 @@ declare module 'response' {
     url?: string;
     status: string;
     cartUpdated: ICartItem[];
+  };
+
+  type IProfileResponse = {
+    id?: string;
+    _id?: string | { $oid: string };
+    firstName: string;
+    lastName: string;
+    email: string;
+    ddi?: string;
+    telephone?: string;
+    birth_date?: string | null;
+    permissions: string[];
+    active: boolean;
+    created_at: string | { $date: string } | null;
+    updated_at: string | { $date: string } | null;
+    documents: IDocuments[];
+    notifications?: INotification;
+    address?: IProfileAddressResponse;
+    addresses?: IProfileAddressResponse[];
+    imgProfile?: string;
+    tokenAPI?: string;
+  };
+
+  type IProfileAddressResponse = {
+    id?: string;
+    _id?: string | { $oid: string };
+    cep?: string;
+    street?: string;
+    number?: string;
+    complement?: string;
+    neighborhood?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    short_state?: string;
+    isDefault?: boolean;
   };
 
   type IForgotPasswordResponse = {
@@ -82,5 +138,30 @@ declare module 'response' {
   type IFormatDocumentByType = {
     document: string;
     type: ETypeDocuments;
+  };
+
+  type IProfileUpdateResponse = {
+    message: string;
+  };
+
+  type IProfileUpdateResponse = {
+    message: string;
+  };
+
+  type ILocationZipCodeResponse = {
+    city: string;
+    country: string;
+    countryAbbreviation: string;
+    created_at: string;
+    latitude: string;
+    longitude: string;
+    neighborhood: string;
+    state: string;
+    stateAbbreviation: string;
+    street: string;
+    updated_at: string;
+    zipCode: string;
+    __v: number;
+    ibgeCode?: string;
   };
 }
