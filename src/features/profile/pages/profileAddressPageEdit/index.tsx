@@ -1,5 +1,5 @@
 import { messages } from '@/assets/messages';
-import { useProfileForm } from '@/features/profile/hooks/useProfileForm';
+import { useProfileAddressEditForm } from '@/features/profile/hooks/useProfileAddressEditForm';
 import { ProfileAddress } from '@/features/profile/organisms/profileAddress';
 import { Button } from '@/features/shared/atoms/button';
 import { GridContainer } from '@/features/shared/molecules/gridContainer';
@@ -7,7 +7,7 @@ import { GridItem } from '@/features/shared/molecules/gridItem';
 
 export const ProfileAddressPageEdit = () => {
   const { updateAddres } = messages.texts;
-  const { control, errors, disableFields, onSubmitAddressData } = useProfileForm();
+  const { control, errors, disableFields, onSubmitAddressData } = useProfileAddressEditForm();
 
   return (
     <form onSubmit={onSubmitAddressData}>

@@ -96,6 +96,7 @@ declare module 'contexts' {
     setProfileImg: IDispatch<string>;
     setDefaultAddress: (addressId: string) => Promise<boolean>;
     removeAddress: (addressId: string) => Promise<boolean>;
+    addAddress: (data: IProfileAddressDataInputModel) => Promise<boolean>;
   };
 
   type ISignUpContext = {

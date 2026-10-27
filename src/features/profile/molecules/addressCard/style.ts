@@ -1,20 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfileAddressCardWrapper = styled.div`
-  display: flex;
-  align-items: start;
-  flex-wrap: wrap;
-  gap: ${({ theme }) => theme.size[6]};
-  height: 100%;
-
-  @media (max-width: ${({ theme }) => theme.screen.sm}) {
-    flex-direction: column;
-    width: 100%;
-    gap: ${({ theme }) => theme.size[4]};
-  }
-`;
-
-export const AddressCard = styled.div`
+export const AddressCardInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -84,7 +70,7 @@ export const Divider = styled.div`
   }
 `;
 
-export const ToAlterWrapepr = styled.div`
+export const ToAlterWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

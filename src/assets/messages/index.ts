@@ -90,6 +90,7 @@ export const messages = {
     successEdit: 'Alterações salvas com sucesso!',
     addressRemoved: 'Endereço removido com sucesso!',
     addressSetAsDefault: 'Endereço definido como padrão com sucesso!',
+    addressAdded: 'Endereço adicionado',
   },
   texts: {
     noNotifications: 'Você não possui notificações',
@@ -193,6 +194,7 @@ export const messages = {
     exclude: 'Excluir',
     toAlter: 'Alterar',
     addDeliveryInstruction: 'Adicionar instrução de entrega',
+    addNewAddres: 'Adicionar novo endereço',
   },
   countries: {
     AF: 'Afeganistão',

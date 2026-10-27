@@ -1,12 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
-import type {
-  IDocumentsOptions,
-  IProfileAddressDataInputModel,
-  IProfilePersonalDataInputModel,
-} from 'props';
+import type { IProfileAddressDataInputModel } from 'props';
 import { type FieldPath, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { ILocationZipCodeResponse } from 'response';
@@ -20,18 +15,16 @@ import {
   type IProfileData,
   profileAddressDataSchema,
   profileDataSchema,
-  profilePersonalDataSchema,
 } from '@/schemas/profileData';
-import { ETypeDocuments } from '@/types/enum';
+import type { ETypeDocuments } from '@/types/enum';
 import { formatDocumentByType } from '@/utils/format/formatDocument';
 import { formatPhoneNumber } from '@/utils/format/formatPhone';
 import { getCountryMask } from '@/utils/services/getCountryMask';
 import { setFormValues } from '@/utils/services/setFormValues';
 import { verifyCep } from '@/utils/verify/verifyCep';
-import { verifyDocumentByType } from '@/utils/verify/verifyDocuments';
 
-export const useProfileForm = () => {
-  const { unknownError, invalidDocument } = messages.error;
+export const useProfileAddressEditForm = () => {
+  const { unknownError } = messages.error;
   const navigate = useNavigate();
   const { addressId } = useParams<{ addressId: string }>();
 
@@ -45,20 +38,17 @@ export const useProfileForm = () => {
     clearErrors,
   } = useForm<IProfileData>(profileDataSchema);
 
-  const { address, documents, ddi } = watch();
+  const { address } = watch();
   const cep = address?.cep;
   const country = 'BR';
-  const typeDocument: ETypeDocuments =
-    (documents?.[0]?.typeDocument as ETypeDocuments) ?? ETypeDocuments.CPF;
 
   const { openAlert, setLoading } = useApp();
   const { profile, setProfile } = useProfile();
-  const { user, token } = useAuth();
+  const { token } = useAuth();
 
   const [disableFields, setDisableFields] = useState<(keyof ILocationZipCodeResponse)[]>([]);
   const initialCepRef = useRef<string | null>(null);
   const userEditedCepRef = useRef<boolean>(false);
-
   const [isCepValid, setIsCepValid] = useState(false);
 
   useEffect(() => {
@@ -68,16 +58,18 @@ export const useProfileForm = () => {
   }, [address?.country, country, setValue]);
 
   useEffect(() => {
-    if (profile?.address && token) {
-      setLoading(false);
-
-      const addressToLoad = addressId
-        ? profile.addresses?.find((addr) => addr.id === addressId)
-        : profile.address;
-
+    if (profile?.addresses && token && addressId) {
+      const addressToLoad = profile.addresses?.find((addr) => addr.id === addressId);
       if (!addressToLoad) return;
 
       setFormValues(setValue, {
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        email: profile.email,
+        telephone: formatPhoneNumber({
+          phone: profile.telephone,
+          shortCountry: brazilCountry.short,
+        }),
         address: {
           country,
           number: addressToLoad.number,
@@ -101,17 +93,10 @@ export const useProfileForm = () => {
               type: document.typeDocument,
             }),
           })),
-        email: profile.email,
-        firstName: profile.firstName,
-        lastName: profile.lastName,
         ddi: brazilCountry.ddi,
-        telephone: formatPhoneNumber({
-          phone: profile.telephone,
-          shortCountry: brazilCountry.short,
-        }),
       });
     }
-  }, [profile, addressId]);
+  }, [profile, addressId, token]);
 
   useEffect(() => {
     const fields = [
@@ -193,78 +178,6 @@ export const useProfileForm = () => {
     };
   }, [cep, country]);
 
-  const saveProfileData = (
-    data: IProfilePersonalDataInputModel | IProfileAddressDataInputModel,
-    updateProfile: () => void,
-  ) => {
-    setLoading(true);
-    const updateCall = addressId
-      ? profileController.updateProfileAddress(addressId, data as IProfileAddressDataInputModel)
-      : profileController.updateProfile(data);
-
-    updateCall
-      .then(() => {
-        openAlert(messages.success.successEdit, 'success');
-        updateProfile();
-        navigate('/profile');
-      })
-      .catch((errorMessage) => {
-        openAlert(errorMessage ? errorMessage : unknownError, 'error');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const onSubmitPersonalData = (event?: FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-    clearErrors();
-
-    const data = getValues();
-    const validation = profilePersonalDataSchema.safeParse({
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      documents: data.documents,
-    });
-
-    if (!validation.success) {
-      validation.error.issues.forEach((issue) => {
-        setError(issue.path.join('.') as FieldPath<IProfileData>, {
-          type: 'manual',
-          message: issue.message,
-        });
-      });
-      return;
-    }
-
-    const document = validation.data.documents[0];
-    if (!verifyDocumentByType(document.valueDocument, document.typeDocument as ETypeDocuments)) {
-      setError('documents.0.valueDocument', { message: invalidDocument });
-      return;
-    }
-
-    const formattedData: IProfilePersonalDataInputModel = {
-      firstName: validation.data.firstName,
-      lastName: validation.data.lastName,
-      email: validation.data.email,
-      documents: validation.data.documents.map((item) => ({
-        typeDocument: item.typeDocument as ETypeDocuments,
-        valueDocument: item.valueDocument,
-      })),
-    };
-
-    saveProfileData(formattedData, () => {
-      setProfile((currentProfile) => ({
-        ...currentProfile,
-        firstName: formattedData.firstName,
-        lastName: formattedData.lastName,
-        email: formattedData.email,
-        documents: formattedData.documents,
-      }));
-    });
-  };
-
   const onSubmitAddressData = (event?: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     clearErrors();
@@ -315,48 +228,45 @@ export const useProfileForm = () => {
       },
     };
 
-    saveProfileData(formattedData, () => {
-      setProfile((currentProfile) => ({
-        ...currentProfile,
-        telephone: formattedData.telephone,
-        address: {
-          ...currentProfile.address,
-          ...formattedData.address,
-          shortState: data.address.stateAbbreviation ?? address.state ?? '',
-        },
-        addresses: (currentProfile.addresses ?? []).map((profileAddress) =>
-          profileAddress.isDefault
-            ? {
-                ...profileAddress,
-                ...formattedData.address,
-                shortState: data.address.stateAbbreviation ?? address.state ?? '',
-              }
-            : profileAddress,
-        ),
-      }));
-    });
+    setLoading(true);
+    profileController
+      .updateProfileAddress(addressId!, formattedData)
+      .then(() => {
+        openAlert(messages.success.successEdit, 'success');
+        setProfile((currentProfile) => ({
+          ...currentProfile,
+          telephone: formattedData.telephone,
+          address: {
+            ...currentProfile.address,
+            ...formattedData.address,
+            shortState: data.address.stateAbbreviation ?? address.state ?? '',
+          },
+          addresses: (currentProfile.addresses ?? []).map((profileAddress) =>
+            profileAddress.isDefault
+              ? {
+                  ...profileAddress,
+                  ...formattedData.address,
+                  shortState: data.address.stateAbbreviation ?? address.state ?? '',
+                }
+              : profileAddress,
+          ),
+        }));
+        navigate('/profile');
+      })
+      .catch((errorMessage) => {
+        openAlert(errorMessage ? errorMessage : unknownError, 'error');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  const onChangeDocumentType = (document: IDocumentsOptions) => {
-    setValue('documents.0.typeDocument', document.value);
-  };
-
-  const customSetValue = (route: any, value: any, options?: any) => {
-    setValue(route, value, options);
-  };
-
-  const hook = {
-    fullname: user ? `${user.firstName} ${user.lastName}` : '',
+  return {
     control,
-    onSubmitPersonalData,
     onSubmitAddressData,
     country,
-    typeDocument,
     errors,
-    customSetValue,
-    onChangeDocumentType,
-    ddi,
     disableFields,
+    setValue,
   };
-  return hook;
 };

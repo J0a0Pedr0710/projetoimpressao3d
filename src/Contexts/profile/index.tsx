@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import type { INotification, IProfile } from 'models';
+import type { IProfileAddressDataInputModel } from 'props';
 
 import { messages } from '@/assets/messages';
 import { ProfileContext } from '@/constants/contexts';
@@ -134,7 +135,6 @@ export const ProfileProvider = ({ children }: IProvider) => {
   };
 
   const removeProfileAddress = async () => {
-    setLoading(true);
     try {
       await profileController.removeProfileAddress();
       setProfile((currentProfile) => ({
@@ -182,6 +182,21 @@ export const ProfileProvider = ({ children }: IProvider) => {
     }
   };
 
+  const addAddress = async (data: IProfileAddressDataInputModel) => {
+    setLoading(true);
+    try {
+      await profileController.addAddress(data);
+      openAlert(messages.success.addressAdded, 'success');
+      await loadProfile();
+      return true;
+    } catch (error) {
+      openAlert(typeof error === 'string' ? error : messages.error.unknownError, 'error');
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <ProfileContext.Provider
       value={{
@@ -195,6 +210,7 @@ export const ProfileProvider = ({ children }: IProvider) => {
         setProfileImg,
         setDefaultAddress,
         removeAddress,
+        addAddress,
       }}
     >
       {children}

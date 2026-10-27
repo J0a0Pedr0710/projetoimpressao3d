@@ -55,7 +55,7 @@ export const ProfilePersonalForm = ({
           />
         </GridItem>
 
-        <GridItem cols={{ base: 12, sm: 1 }} zIndex={11}>
+        <GridItem cols={{ base: 12, sm: 1 }} zIndex={1}>
           <Select
             onChange={(value) => onChangeDocumentType(value as IDocumentsOptions)}
             value={typeDocument ?? ETypeDocuments.CPF}
