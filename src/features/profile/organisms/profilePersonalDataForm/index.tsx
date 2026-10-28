@@ -2,7 +2,7 @@ import { messages } from '@/assets/messages';
 import { typeDocuments } from '@/constants/typeDocument';
 import { useApp } from '@/contexts';
 import { Button } from '@/features/shared/atoms/button';
-import { Title } from '@/features/shared/atoms/title';
+
 import { ControlInput } from '@/features/shared/molecules/controlInput';
 import { GridContainer } from '@/features/shared/molecules/gridContainer';
 import { GridItem } from '@/features/shared/molecules/gridItem';
@@ -21,17 +21,13 @@ export const ProfilePersonalForm = ({
 }: IProfilePersonalData) => {
   const { loading } = useApp();
   const { firstName, lastName, typeDocumentLabel, document, mail } = messages.label;
-  const { personalData } = messages.titles;
+
   const { updateData } = messages.texts;
 
   return (
     <>
       <GridContainer size={12} spacing={{ base: 2, sm: 4 }}>
-        <GridItem cols={{ base: 12 }}>
-          <Title isBold size="xl" isLoading={loading}>
-            {personalData}
-          </Title>
-        </GridItem>
+
 
         <GridItem cols={{ base: 2 }}>
           <ControlInput

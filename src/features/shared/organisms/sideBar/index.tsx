@@ -10,13 +10,15 @@ import { Container, Overflow } from './style';
 
 export const SideBar = () => {
   const { user, logout } = useAuth();
-  const { isScreenXs, layoutMenuOpen, setLayoutMenuOpen } = useApp();
+  const { isScreenXs, layoutMenuOpen, setLayoutMenuOpen, pathname } = useApp();
 
   const { out } = messages.texts;
 
-  const sideBarOptions = defaultSidebarOptions.filter((option) =>
-    option.enableTypes.some((type) => user.permissions.includes(type)),
-  );
+  const sideBarOptions = defaultSidebarOptions.filter((option) => {
+    const hasPermission = option.enableTypes.some((type) => user.permissions.includes(type));
+    const showOnPath = option.showOnPath ? pathname.includes(option.showOnPath) : true;
+    return hasPermission && showOnPath;
+  });
 
   const isOpen = layoutMenuOpen === 'sidebar';
 
