@@ -18,7 +18,9 @@ export interface IAddressCardProps {
     telephone: string;
   };
   isDefault: boolean;
-  onEdit: (addressId?: string) => void;
-  onDelete: (addressId: string) => void;
-  onSetDefault: (addressId: string) => void;
+  hideActions?: boolean;
+  hideDeliveryInstructions?: boolean;
+  onEdit?: (addressId?: string) => void;
+  onDelete?: (addressId: string) => void;
+  onSetDefault?: (addressId: string) => void;
 }

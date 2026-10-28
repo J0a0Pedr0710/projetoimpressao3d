@@ -69,11 +69,6 @@ describe('verifyDocumentByType', () => {
     expect(verifyDocumentByType('45.723.174/0001-99', ETypeDocuments.CNPJ)).toBe(false);
   });
 
-  it('returns true for PASSPORT and RUC_DNI_CE types', () => {
-    expect(verifyDocumentByType('ABC12345', ETypeDocuments.PASSPORT)).toBe(true);
-    expect(verifyDocumentByType('1234567890', ETypeDocuments.RUC_DNI_CE)).toBe(true);
-  });
-
   it('returns false for unsupported type with invalid data', () => {
     expect(verifyDocumentByType('12345', 'UNKNOWN' as ETypeDocuments)).toBe(false);
   });

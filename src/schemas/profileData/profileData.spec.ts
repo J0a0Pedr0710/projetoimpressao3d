@@ -19,6 +19,7 @@ const createValidData = (overrides: Partial<IProfileData> = {}): IProfileData =>
     number: '123',
     complement: 'Apto 101',
     neighborhood: 'Centro',
+    country: 'Brasil',
   },
   documents: [
     {

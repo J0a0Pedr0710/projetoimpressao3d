@@ -228,7 +228,6 @@ export const useProfileAddressEditForm = () => {
       },
     };
 
-    setLoading(true);
     profileController
       .updateProfileAddress(addressId!, formattedData)
       .then(() => {
@@ -251,7 +250,7 @@ export const useProfileAddressEditForm = () => {
               : profileAddress,
           ),
         }));
-        navigate('/profile');
+        navigate('/profile/addresses');
       })
       .catch((errorMessage) => {
         openAlert(errorMessage ? errorMessage : unknownError, 'error');

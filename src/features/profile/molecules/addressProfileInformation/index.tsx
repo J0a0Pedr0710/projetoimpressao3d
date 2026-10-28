@@ -8,7 +8,11 @@ import { Text } from '@/features/shared/atoms/text';
 import { formatPhoneNumber } from '@/utils/format/formatPhone';
 import { getCountryMask } from '@/utils/services/getCountryMask';
 
-export const PersonInformation = ({ person, address }: IAddressProfileInformation) => {
+export const PersonInformation = ({
+  person,
+  address,
+  hideDeliveryInstructions = false,
+}: IAddressProfileInformation) => {
   const { phone } = messages.label;
   const { addDeliveryInstruction } = messages.texts;
   const maskCep = getCountryMask('BR');
@@ -39,7 +43,7 @@ export const PersonInformation = ({ person, address }: IAddressProfileInformatio
       )}
 
       <AddDeliveryInstructionWrapper>
-        <button>{addDeliveryInstruction}</button>
+        {!hideDeliveryInstructions && <button>{addDeliveryInstruction}</button>}
       </AddDeliveryInstructionWrapper>
     </AddressProfileWrapper>
   );

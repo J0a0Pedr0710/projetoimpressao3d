@@ -1,27 +1,30 @@
-import { useCallback, useEffect } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 import { messages } from '@/assets/messages';
 import { useApp, useAuth, useProfile } from '@/contexts';
 import { profileController } from '@/controllers/profileController';
 import { FileInput } from '@/features/profile/atoms/fileInput';
-import { ProfileAddressCard } from '@/features/profile/organisms/profileAddressCard';
-import { ProfileContainer, ProfileHeader } from '@/features/profile/pages/profilePage/style';
+import { OptionsCard } from '@/features/profile/molecules/optionsCard';
+import {
+  ProfileContainer,
+  ProfileHeader,
+  ProfileOptions,
+} from '@/features/profile/pages/profilePage/style';
 import { Avatar } from '@/features/shared/atoms/avatar';
 import { NameAbbreviation } from '@/features/shared/atoms/nameAbbreviation';
 import { Title } from '@/features/shared/atoms/title';
+import { useNavigations } from '@/utils/services/getNavigation';
+import { LastOrders } from '@/features/profile/organisms/lastOrders';
 
 export const ProfilePage = () => {
   const { user } = useAuth();
-  const { imgProfile, setProfileImg, profileUpdate, profile } = useProfile();
+  const { imgProfile, setProfileImg, profile } = useProfile();
   const { openAlert, setLoading } = useApp();
-  const navigate = useNavigate();
 
-  useEffect(profileUpdate, []);
+  const { handleEditProfileDataNavigation, handleAddressesNavigation } = useNavigations();
 
   const { unknownError, invalidFileType } = messages.error;
-  const { noSelectFile } = messages.texts;
+  const { noSelectFile, myData, myOrders, addressess, favorites } = messages.texts;
 
   const fullname = user ? `${profile.firstName} ${profile.lastName}`.trim() : '';
 
@@ -58,15 +61,6 @@ export const ProfilePage = () => {
     [imgProfile, setProfileImg, openAlert, setLoading],
   );
 
-  const handleNavigation = (event?: React.MouseEvent<HTMLButtonElement>) => {
-    const to = '/profile/edit';
-    if (event?.ctrlKey) {
-      window.open(to, '_blank', 'noopener,noreferrer');
-    } else {
-      navigate(to);
-    }
-  };
-
   return (
     <>
       <ProfileContainer>
@@ -83,13 +77,26 @@ export const ProfilePage = () => {
             {fullname}
           </Title>
         </ProfileHeader>
+
+        <ProfileOptions>
+          <OptionsCard
+            icon="user"
+            title={myData}
+            color="primary600"
+            onClick={handleEditProfileDataNavigation}
+          />
+          <OptionsCard icon="orders" title={myOrders} color="primary600" />
+          <OptionsCard
+            icon="location"
+            title={addressess}
+            color="primary600"
+            onClick={handleAddressesNavigation}
+          />
+          <OptionsCard icon="favorite" title={favorites} color="primary600" />
+        </ProfileOptions>
       </ProfileContainer>
 
-      <ProfileAddressCard />
-
-      <button type="button" onClick={handleNavigation}>
-        Editar Informações Pessoais
-      </button>
+      <LastOrders />
     </>
   );
 };

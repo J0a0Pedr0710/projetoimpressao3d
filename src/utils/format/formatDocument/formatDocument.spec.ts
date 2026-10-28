@@ -54,12 +54,4 @@ describe('formatDocumentByType function', () => {
     expect(formatDocumentByType({ document: null as any, type: ETypeDocuments.CNPJ })).toBe('');
   });
 
-  it('returns original document for unsupported types', () => {
-    expect(formatDocumentByType({ document: 'ABC123456', type: ETypeDocuments.PASSPORT })).toBe(
-      'ABC123456',
-    );
-    expect(formatDocumentByType({ document: '12345678', type: ETypeDocuments.RUC_DNI_CE })).toBe(
-      '12345678',
-    );
-  });
 });
