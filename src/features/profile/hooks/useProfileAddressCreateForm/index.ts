@@ -194,13 +194,12 @@ export const useProfileAddressCreateForm = () => {
       },
     };
 
-    setLoading(true);
     profileController
       .addAddress(formattedData)
       .then(() => {
         openAlert(messages.success.addressAdded, 'success');
         profileUpdate();
-        navigate('/profile');
+        navigate('/profile/addresses');
       })
       .catch((errorMessage) => {
         openAlert(errorMessage ? errorMessage : unknownError, 'error');

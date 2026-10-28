@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { useProfile } from '@/contexts';
-import { AddAddress } from '@/features/profile/molecules/addAddress';
 import { AddressCard } from '@/features/profile/molecules/addressCard';
-import { ProfileAddressCardWrapper } from '@/features/profile/organisms/profileAddressCard/style';
 import { sortAddresses } from '@/utils/services/getDefaultProfileAddress';
 
 export const ProfileAddressCard = () => {
@@ -46,11 +44,7 @@ export const ProfileAddressCard = () => {
   };
 
   return (
-    <ProfileAddressCardWrapper>
-      <AddAddress
-        onClick={() => handleNavigation(undefined, undefined)}
-        title="Adicionar endereço"
-      />
+    <>
       {addresses.map((address, index) => {
         const isDefault = address.isDefault || addresses.length === 1;
 
@@ -66,6 +60,6 @@ export const ProfileAddressCard = () => {
           />
         );
       })}
-    </ProfileAddressCardWrapper>
+    </>
   );
 };

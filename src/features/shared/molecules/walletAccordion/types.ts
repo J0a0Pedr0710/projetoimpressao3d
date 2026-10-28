@@ -1,6 +1,5 @@
-import type { IElement } from '@/types/props';
-
 import type { ETransactionStatus } from '@/types/enum';
+import type { IElement } from '@/types/props';
 
 export type IWalletAccordionType =
   'default' | 'error' | 'canceled' | 'refunded' | 'pending' | 'success';
@@ -24,8 +23,8 @@ export type IWalletAccordion = IWalletButtonBase &
     isScreenMd: boolean;
   };
 
-export interface IWalletAccordionWrapperProps {
+export type IWalletAccordionWrapperProps = {
   $borderColor?: string;
   $backgroundColor?: string;
   $isFocused?: boolean;
-}
+};

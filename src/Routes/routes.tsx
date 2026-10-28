@@ -3,10 +3,13 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { routeConfig } from '@/constants/routeConfig';
 import { Providers } from '@/contexts/Providers';
 
+import { ScrollToTop } from './scrollToTop';
+
 const router = createBrowserRouter([
   {
     element: (
       <Providers>
+        <ScrollToTop />
         <Outlet />
       </Providers>
     ),

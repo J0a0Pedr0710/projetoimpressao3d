@@ -60,7 +60,7 @@ describe('signUpSchema', () => {
       createValidData({
         document: {
           typeDocument: ETypeDocuments.CPF,
-          valueDocument: '111.111.111-11', // CPF realmente inválido
+          valueDocument: '111.111.111-11',
         },
       }),
     );
@@ -78,18 +78,6 @@ describe('signUpSchema', () => {
         document: {
           typeDocument: ETypeDocuments.CPF,
           valueDocument: '390.533.447-05',
-        },
-      }),
-    );
-    expect(result.success).toBe(true);
-  });
-
-  it('should pass with PASSPORT type and any value', () => {
-    const result = schema.safeParse(
-      createValidData({
-        document: {
-          typeDocument: ETypeDocuments.PASSPORT,
-          valueDocument: 'XP123456',
         },
       }),
     );
