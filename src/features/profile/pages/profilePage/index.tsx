@@ -6,7 +6,7 @@ import { messages } from '@/assets/messages';
 import { useApp, useAuth, useProfile } from '@/contexts';
 import { profileController } from '@/controllers/profileController';
 import { FileInput } from '@/features/profile/atoms/fileInput';
-import { ProfileAddressCard } from '@/features/profile/molecules/profileAddressCard';
+import { ProfileAddressCard } from '@/features/profile/organisms/profileAddressCard';
 import { ProfileContainer, ProfileHeader } from '@/features/profile/pages/profilePage/style';
 import { Avatar } from '@/features/shared/atoms/avatar';
 import { NameAbbreviation } from '@/features/shared/atoms/nameAbbreviation';

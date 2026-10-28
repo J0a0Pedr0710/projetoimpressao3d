@@ -3,7 +3,7 @@ import { Icon } from '@/features/shared/atoms/icons';
 import type { IIconKeys } from '@/features/shared/atoms/icons/types';
 import type { ISelectOption } from '@/features/shared/molecules/select/types';
 
-import { Option } from './styles';
+import { Option } from './style';
 
 export const countryOptions: ISelectOption[] = countries
   .sort((optionA, optionB) =>

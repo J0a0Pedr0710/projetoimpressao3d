@@ -1,6 +1,5 @@
-import type { IMainTemplateRouteHandle } from '@/types/props';
-
 import { messages } from '@/assets/messages';
+import type { IMainTemplateRouteHandle } from '@/types/props';
 
 const { deliveryAddress, home, paymentCart, personalData, profile } = messages.titles;
 

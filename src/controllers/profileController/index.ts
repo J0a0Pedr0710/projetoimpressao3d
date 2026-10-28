@@ -85,7 +85,7 @@ const removeAddress = (addressId: string) => {
 const addAddress = (data: IProfileAddressDataInputModel) => {
   return new Promise<IProfileUpdateResponse>((resolve, reject) =>
     apiProject3DServer
-      .post(`${route}/aadAddress`, { data })
+      .post(`${route}/addAddress`, data)
       .then(({ data }) => resolve(data))
       .catch((error) => reject(errorMessage(error))),
   );

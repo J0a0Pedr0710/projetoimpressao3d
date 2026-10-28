@@ -1,8 +1,7 @@
-import type { IElement } from '@/types/props';
-
 import { useApp, useAuth } from '@/contexts';
 import { Spinner } from '@/features/shared/atoms/spinner';
 import { TopBar } from '@/features/shared/organisms/topBar';
+import type { IElement } from '@/types/props';
 
 import { LoginTemplateLoadingWrapper, LoginTemplateWrapper } from './style';
 

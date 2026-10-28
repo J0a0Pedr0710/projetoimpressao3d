@@ -1,5 +1,6 @@
-import type { IIconStyle } from '@/types/components';
 import { useTheme } from 'styled-components';
+
+import type { IIconStyle } from '@/types/components';
 
 export const plus = ({ color, size, ...props }: IIconStyle) => {
   const theme = useTheme();
@@ -11,11 +12,11 @@ export const plus = ({ color, size, ...props }: IIconStyle) => {
       width={theme.size[size]}
       height={theme.size[size]}
       fill="none"
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
     >
       <path
         fill={color ? theme.colors[color] : undefined}
-        d="M8.5 2v5.5H14c.25 0 .5.25.5.5 0 .281-.25.5-.5.5H8.5V14c0 .281-.25.5-.5.5a.494.494 0 0 1-.5-.5V8.5H2a.494.494 0 0 1-.5-.5c0-.25.219-.5.5-.5h5.5V2c0-.25.219-.5.5-.5.25 0 .5.25.5.5"
+        d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"
       ></path>
     </svg>
   );

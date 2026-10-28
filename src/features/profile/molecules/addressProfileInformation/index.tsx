@@ -2,7 +2,7 @@ import { messages } from '@/assets/messages';
 import {
   AddDeliveryInstructionWrapper,
   AddressProfileWrapper,
-} from '@/features/profile/molecules/addressProfileInformation/styles';
+} from '@/features/profile/molecules/addressProfileInformation/style';
 import type { IAddressProfileInformation } from '@/features/profile/molecules/addressProfileInformation/types';
 import { Text } from '@/features/shared/atoms/text';
 import { formatPhoneNumber } from '@/utils/format/formatPhone';

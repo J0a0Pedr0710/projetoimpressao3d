@@ -1,8 +1,6 @@
 import { GridContainerAtom } from '@/features/shared/atoms/gridContainerAtom';
-import type { IGrid } from '@/features/shared/atoms/gridContainerAtom/types';
 import { useScreenBreakpoints } from '@/features/shared/hooks/useScreenBreakpoints';
-
-type IResponsiveGridContainer = Omit<IGrid, 'screens'>;
+import type { IResponsiveGridContainer } from '@/features/shared/molecules/gridContainer/types';
 
 export const GridContainer = ({ children, ...props }: IResponsiveGridContainer) => {
   const screens = useScreenBreakpoints();
