@@ -48,7 +48,5 @@ export const verifyDocumentByType = (document: string, type: ETypeDocuments) => 
   const cleaned = document.replace(/[^\d]+/g, '');
   if (type === ETypeDocuments.CPF) return verifyCpf(cleaned);
   if (type === ETypeDocuments.CNPJ) return verifyCnpj(cleaned);
-  if (type === ETypeDocuments.PASSPORT) return true;
-  if (type === ETypeDocuments.RUC_DNI_CE) return true;
   return false;
 };

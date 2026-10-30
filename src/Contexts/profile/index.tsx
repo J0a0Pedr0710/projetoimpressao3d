@@ -153,7 +153,6 @@ export const ProfileProvider = ({ children }: IProvider) => {
   };
 
   const setDefaultAddress = async (addressId: string) => {
-    setLoading(true);
     try {
       await profileController.setDefaultAddress(addressId);
       openAlert(messages.success.addressSetAsDefault, 'success');
@@ -168,7 +167,6 @@ export const ProfileProvider = ({ children }: IProvider) => {
   };
 
   const removeAddress = async (addressId: string) => {
-    setLoading(true);
     try {
       await profileController.removeAddress(addressId);
       openAlert(messages.success.addressRemoved, 'success');
@@ -183,7 +181,6 @@ export const ProfileProvider = ({ children }: IProvider) => {
   };
 
   const addAddress = async (data: IProfileAddressDataInputModel) => {
-    setLoading(true);
     try {
       await profileController.addAddress(data);
       openAlert(messages.success.addressAdded, 'success');

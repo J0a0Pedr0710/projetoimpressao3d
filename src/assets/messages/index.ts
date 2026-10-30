@@ -20,6 +20,7 @@ export const messages = {
     defaultAddressTitle: 'Endereço de entrega padrão',
     profile: 'Meu Perfil',
     deliveryAddress: 'Endereço de entrega',
+    registeredAddresses: 'Endereços Cadastrados'
   },
   months: {},
   label: {
@@ -102,7 +103,7 @@ export const messages = {
     createdByEntrepreneursLikeYou: 'Criado por empreendedores como você',
     out: 'Sair',
     help: 'Ajuda',
-    helpWhatsappMessage: 'Olá! Estou com uma dúvida na plataforma e gostaria de suporte.',
+    helpWhatsappMessage: 'Olá! Estou com uma dúvida na plataforma e gostaria de esclarece-lá.',
     contactUs: 'Fale conosco',
     walletModalAddCredit: 'Adicionar crédito',
     walletModalBonus: 'Bônus',
@@ -195,6 +196,10 @@ export const messages = {
     toAlter: 'Alterar',
     addDeliveryInstruction: 'Adicionar instrução de entrega',
     addNewAddres: 'Adicionar novo endereço',
+    myOrders: 'Meus pedidos',
+    myData: 'Meus dados',
+    addressess: 'Endereços',
+    favorites: 'Favoritos',
   },
   countries: {
     AF: 'Afeganistão',

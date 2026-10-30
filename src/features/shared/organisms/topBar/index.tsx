@@ -1,9 +1,10 @@
 import { useApp, useAuth } from '@/contexts';
+import { CartMenu } from '@/features/shared/molecules/cartMenu';
 import { ProfileOptionsMenu } from '@/features/shared/molecules/profileOptionsMenu';
 import { TopBarMenu } from '@/features/shared/molecules/topBarMenu';
 import { TopBarNoMenu } from '@/features/shared/molecules/topBarNoMenu';
 
-import { TopBarWrapper, UserSectionWrapper } from './style';
+import { Divider, TopBarWrapper, UserSectionWrapper } from './style';
 import type { ITopBar } from './types';
 
 export const TopBar = ({ mobileUserSectionIsVisible, shouldRenderUserSection = true }: ITopBar) => {
@@ -20,6 +21,8 @@ export const TopBar = ({ mobileUserSectionIsVisible, shouldRenderUserSection = t
 
       {renderUserSection && (
         <UserSectionWrapper>
+          <CartMenu />
+          <Divider />
           <ProfileOptionsMenu />
         </UserSectionWrapper>
       )}

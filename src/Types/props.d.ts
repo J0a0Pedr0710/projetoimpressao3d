@@ -40,6 +40,7 @@ declare module 'props' {
     activeIcon: IIconKeys;
     to: string;
     enableTypes: string[];
+    showOnPath?: string;
   };
 
   type ICountries = {

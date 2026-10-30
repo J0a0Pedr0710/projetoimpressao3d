@@ -16,19 +16,23 @@ import { emailConfirm } from '@/assets/icons/emailConfirm';
 import { emailVerified } from '@/assets/icons/emailVerified';
 import { errorCircle } from '@/assets/icons/errorCircle';
 import { eye } from '@/assets/icons/eye';
+import { favorite } from '@/assets/icons/favorite';
 import { googleIcon } from '@/assets/icons/googleIcon';
 import { hiddenEye } from '@/assets/icons/hiddenEye';
 import { inIcon } from '@/assets/icons/in';
 import { info } from '@/assets/icons/info';
 import { listRadio } from '@/assets/icons/listRadio';
+import { location } from '@/assets/icons/location';
 import { logout } from '@/assets/icons/logout';
 import { menu } from '@/assets/icons/menu';
 import { notFoundData } from '@/assets/icons/notFoundData';
+import { orders } from '@/assets/icons/orders';
 import { out } from '@/assets/icons/out';
 import { plus } from '@/assets/icons/plus';
 import { question } from '@/assets/icons/question';
 import { settings } from '@/assets/icons/settings';
 import { triangleExclamationFilled } from '@/assets/icons/triangleExclamationFilled';
+import { user } from '@/assets/icons/user';
 import { wallet } from '@/assets/icons/wallet';
 import { whatsapp } from '@/assets/icons/whatsapp';
 import { x } from '@/assets/icons/x';
@@ -68,4 +72,8 @@ export const ProjetoIcons = {
   hiddenEye,
   eye,
   check,
+  orders,
+  user,
+  favorite,
+  location,
 };
