@@ -1,7 +1,7 @@
 import { messages } from '@/assets/messages';
 import type { IMainTemplateRouteHandle } from '@/types/props';
 
-const { deliveryAddress, home, paymentCart, personalData, profile } = messages.titles;
+const { deliveryAddress, home, paymentCart, personalData, profile, registeredAddresses } = messages.titles;
 
 export const homePage = { name: home, to: '/' };
 const profilePage = { name: profile, to: '/profile' };
@@ -25,4 +25,9 @@ export const profileAddressRouteHandle: IMainTemplateRouteHandle = {
 export const profilePersonalDataRouteHandle: IMainTemplateRouteHandle = {
   pages: [homePage, profilePage],
   actualPage: personalData,
+};
+
+export const profileAddresses: IMainTemplateRouteHandle = {
+  pages: [homePage, profilePage],
+  actualPage: registeredAddresses,
 };

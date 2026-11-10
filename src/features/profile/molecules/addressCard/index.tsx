@@ -9,7 +9,7 @@ import {
   ToAlterWrapper,
 } from '@/features/profile/molecules/addressCard/style';
 import type { IAddressCardProps } from '@/features/profile/molecules/addressCard/types';
-import { PersonInformation } from '@/features/profile/molecules/addressProfileInformation';
+import { AddressProfileInformation } from '@/features/profile/molecules/addressProfileInformation';
 import { GridItem } from '@/features/shared/molecules/gridItem';
 
 export const AddressCard = ({
@@ -19,6 +19,8 @@ export const AddressCard = ({
   onEdit,
   onDelete,
   onSetDefault,
+  hideActions = false,
+  hideDeliveryInstructions = false,
 }: IAddressCardProps) => {
   const { defaultAddress, defineDefaultAddress, exclude, toAlter } = messages.texts;
 
@@ -26,36 +28,41 @@ export const AddressCard = ({
     <AddressCardInfo>
       {isDefault && <DefaultAddressLabel>{defaultAddress}</DefaultAddressLabel>}
 
-      <PersonInformation person={profile} address={address} />
+      <AddressProfileInformation
+        person={profile}
+        address={address}
+        hideDeliveryInstructions={hideDeliveryInstructions}
+      />
+      {!hideActions && (
+        <GridItem>
+          <AddressCardActions>
+            <ToAlterWrapper>
+              <button type="button" onClick={() => onEdit?.(address.id)}>
+                {toAlter}
+              </button>
+            </ToAlterWrapper>
 
-      <GridItem>
-        <AddressCardActions>
-          <ToAlterWrapper>
-            <button type="button" onClick={() => onEdit(address.id)}>
-              {toAlter}
-            </button>
-          </ToAlterWrapper>
+            <Divider />
 
-          <Divider />
+            <DeleteWrapper>
+              <button type="button" onClick={() => address.id && onDelete?.(address.id)}>
+                {exclude}
+              </button>
+            </DeleteWrapper>
 
-          <DeleteWrapper>
-            <button type="button" onClick={() => address.id && onDelete(address.id)}>
-              {exclude}
-            </button>
-          </DeleteWrapper>
-
-          {!isDefault && (
-            <>
-              <Divider />
-              <SetAsDefaultWrapper>
-                <button type="button" onClick={() => address.id && onSetDefault(address.id)}>
-                  {defineDefaultAddress}
-                </button>
-              </SetAsDefaultWrapper>
-            </>
-          )}
-        </AddressCardActions>
-      </GridItem>
+            {!isDefault && (
+              <>
+                <Divider />
+                <SetAsDefaultWrapper>
+                  <button type="button" onClick={() => address.id && onSetDefault?.(address.id)}>
+                    {defineDefaultAddress}
+                  </button>
+                </SetAsDefaultWrapper>
+              </>
+            )}
+          </AddressCardActions>
+        </GridItem>
+      )}
     </AddressCardInfo>
   );
 };

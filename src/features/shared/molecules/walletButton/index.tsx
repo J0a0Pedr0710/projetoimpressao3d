@@ -1,4 +1,4 @@
-import type { IWalletAccordionChipProps } from '@/types/props';
+/* import type { IWalletAccordionChipProps } from '@/types/props';
 import { Link } from 'react-router-dom';
 
 import { messages } from '@/assets/messages';
@@ -65,3 +65,4 @@ export const WalletButton = ({ title, type, value, to, transactionStatus }: IWal
     </ButtonWrapper>
   );
 };
+ */

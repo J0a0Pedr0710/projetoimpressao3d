@@ -9,7 +9,8 @@ export const CartMenu = () => {
   const navigate = useNavigate();
   const { setSelectedCart, cart, updateCart } = useCart();
 
-  const cartLength = cart.length > 10 ? '10+' : cart.length.toString();
+  const cartLength = cart?.length > 10 ? '10+' : (cart?.length ?? 0).toString();
+
   return (
     <button
       data-testid="cart-button"
@@ -21,7 +22,7 @@ export const CartMenu = () => {
     >
       <CartContainer>
         <Icon icon="cart" color="primary600" />
-        {cart.length > 0 && <Badge>{cartLength}</Badge>}
+        {cart?.length > 0 && <Badge>{cartLength}</Badge>}
       </CartContainer>
     </button>
   );

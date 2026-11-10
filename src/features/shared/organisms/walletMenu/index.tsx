@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+/* import { useEffect, useState } from 'react';
 
 import { messages } from '@/assets/messages';
 import { useApp, useProfile, useTransactionContext } from '@/contexts';
@@ -59,3 +59,4 @@ export const WalletMenu = () => {
     </Menu>
   );
 };
+ */

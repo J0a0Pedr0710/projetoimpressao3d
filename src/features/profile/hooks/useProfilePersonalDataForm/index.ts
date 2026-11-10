@@ -114,7 +114,6 @@ export const useProfilePersonalDataForm = () => {
       })),
     };
 
-    setLoading(true);
     profileController
       .updateProfile(formattedData)
       .then(() => {
