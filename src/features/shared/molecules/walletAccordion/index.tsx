@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+/* import { useEffect, useState } from 'react';
 
 import type { IWalletAccordionChipProps } from '@/types/props';
 
@@ -101,3 +101,4 @@ export const WalletAccordion = ({
     </WalletAccordionWrapper>
   );
 };
+ */

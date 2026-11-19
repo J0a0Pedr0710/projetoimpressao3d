@@ -9,6 +9,7 @@ export const AddressCardInfo = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.neutral500};
   border-radius: ${({ theme }) => theme.size[2]};
   width: 100%;
+  min-width: 0;
   height: 100%;
 
   box-shadow: ${({ theme }) => theme.shadow[1]};
@@ -16,22 +17,6 @@ export const AddressCardInfo = styled.div`
   padding: ${({ theme }) => theme.size[4]};
   padding-top: ${({ theme }) => theme.size[8]};
   position: relative;
-
-  @media (max-width: ${({ theme }) => theme.screen.sm}) {
-    width: 100%;
-  }
-
-  @media (min-width: ${({ theme }) => theme.screen.md}) {
-    width: calc(50% - ${({ theme }) => theme.size[3]});
-  }
-
-  @media (min-width: ${({ theme }) => theme.screen.xl}) {
-    width: calc(33.333% - ${({ theme }) => theme.size[3]});
-  }
-
-  @media (min-width: ${({ theme }) => theme.screen.xl2}) {
-    width: calc(25% - ${({ theme }) => theme.size[3]});
-  }
 `;
 
 export const AddressCardActions = styled.div`
