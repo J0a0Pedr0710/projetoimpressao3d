@@ -12,17 +12,3 @@ export const ProfileSummarySectionWrapper = styled.section`
   background: ${({ theme }) => theme.colors.neutral50};
   box-shadow: ${({ theme }) => theme.shadow[1]};
 `;
-
-export const ProfileSummaryHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: ${({ theme }) => theme.size[4]};
-`;
-
-export const ProfileSummaryHeading = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.size[3]};
-  min-width: 0;
-`;

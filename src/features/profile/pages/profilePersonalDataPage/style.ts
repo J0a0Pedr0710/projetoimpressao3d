@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.form`
+export const ProfilePersonalDataPageWrapper = styled.form`
   margin-bottom: ${({ theme }) => theme.size[4]};
   gap: ${({ theme }) => theme.size[20]};
 `;
@@ -19,8 +19,15 @@ export const Divider = styled.div`
   }
 `;
 
-export const Teste = styled.div`
+export const ProfilePersonalDataPageInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.size[6]};
+`;
+
+export const ProfilePersonalTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.size[3]};
+  min-width: 0;
 `;

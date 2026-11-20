@@ -1,0 +1,170 @@
+import { useEffect, useRef, useState } from 'react';
+import type { FormEvent } from 'react';
+
+import { type FieldPath, useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import type { ILocationZipCodeResponse } from 'response';
+
+import { messages } from '@/assets/messages';
+import { useBillingAddress } from '@/contexts';
+import { locationController } from '@/controllers/location';
+import {
+  type IBillingAddressData,
+  billingAddressFormSchema,
+} from '@/schemas/billingAddress';
+import { getCountryMask } from '@/utils/services/getCountryMask';
+import { setFormValues } from '@/utils/services/setFormValues';
+import { verifyCep } from '@/utils/verify/verifyCep';
+
+const country = 'BR';
+
+export const useBillingAddressEditForm = () => {
+  const navigate = useNavigate();
+  const { billingAddressId } = useParams<{ billingAddressId: string }>();
+  const { billingAddresses, updateBillingAddress } = useBillingAddress();
+
+  const {
+    control,
+    setValue,
+    getValues,
+    watch,
+    formState: { errors },
+    setError,
+    clearErrors,
+  } = useForm<IBillingAddressData>(billingAddressFormSchema);
+
+  const cep = watch('billingAddress.cep');
+
+  const [disableFields, setDisableFields] = useState<(keyof ILocationZipCodeResponse)[]>([]);
+  const initialCepRef = useRef<string | null>(null);
+  const userEditedCepRef = useRef<boolean>(false);
+  const [isCepValid, setIsCepValid] = useState(false);
+
+  useEffect(() => {
+    setValue('billingAddress.country', country);
+  }, [setValue]);
+
+  useEffect(() => {
+    if (!billingAddressId) return;
+    const addr = billingAddresses.find((a) => a.id === billingAddressId);
+    if (!addr) return;
+
+    setFormValues(setValue, {
+      billingAddress: {
+        name: addr.name ?? '',
+        telephone: addr.telephone ?? '',
+        country,
+        cep: getCountryMask(country)(addr.cep ?? ''),
+        city: addr.city ?? '',
+        state: addr.state ?? '',
+        street: addr.street ?? '',
+        number: addr.number ?? '',
+        complement: addr.complement ?? '',
+        neighborhood: addr.neighborhood ?? '',
+        stateAbbreviation: addr.state ?? '',
+      },
+    });
+  }, [billingAddressId, billingAddresses]);
+
+  useEffect(() => {
+    const fields = [
+      'city',
+      'state',
+      'street',
+      'neighborhood',
+      'stateAbbreviation',
+    ] as const satisfies readonly (keyof ILocationZipCodeResponse)[];
+
+    if (initialCepRef.current === null && typeof cep === 'string') {
+      initialCepRef.current = cep;
+    }
+
+    if (initialCepRef.current !== null && cep !== initialCepRef.current) {
+      userEditedCepRef.current = true;
+    }
+
+    if (!cep) {
+      setDisableFields([]);
+      return;
+    }
+
+    if (!verifyCep({ cep, shortCountry: country })) {
+      setIsCepValid(false);
+      setDisableFields([]);
+      return;
+    }
+
+    if (!userEditedCepRef.current) {
+      setDisableFields([...fields]);
+      setIsCepValid(true);
+      return;
+    }
+
+    setIsCepValid(false);
+    setDisableFields([]);
+    clearErrors('billingAddress.cep');
+
+    let isCurrentRequest = true;
+
+    locationController
+      .getLocation(cep, country)
+      .then((response) => {
+        if (!isCurrentRequest) return;
+        setIsCepValid(true);
+        clearErrors('billingAddress.cep');
+        const newDisabledFields: (keyof ILocationZipCodeResponse)[] = [];
+        fields.forEach((field) => {
+          const value = response[field];
+          if (value) {
+            setValue(`billingAddress.${field}` as FieldPath<IBillingAddressData>, value);
+            newDisabledFields.push(field);
+          }
+        });
+        setDisableFields(newDisabledFields);
+      })
+      .catch(() => {
+        if (!isCurrentRequest) return;
+        setIsCepValid(false);
+        setDisableFields([...fields]);
+        setError('billingAddress.cep', { type: 'manual', message: messages.error.zipCodeError });
+      });
+
+    return () => {
+      isCurrentRequest = false;
+    };
+  }, [cep]);
+
+  const onSubmit = async (event?: FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+    clearErrors();
+
+    const data = getValues();
+    const addressCep = data.billingAddress?.cep ?? '';
+
+    if (!verifyCep({ cep: addressCep, shortCountry: country }) || !isCepValid) {
+      setError('billingAddress.cep', { type: 'manual', message: messages.error.zipCodeError });
+      return;
+    }
+
+    if (!billingAddressId) return;
+
+    const success = await updateBillingAddress(billingAddressId, {
+      billingAddress: {
+        name: data.billingAddress.name,
+        telephone: data.billingAddress.telephone,
+        cep: addressCep.replace(/\D/g, ''),
+        country,
+        city: data.billingAddress.city,
+        state: data.billingAddress.state,
+        street: data.billingAddress.street,
+        number: data.billingAddress.number,
+        complement: data.billingAddress.complement ?? '',
+        neighborhood: data.billingAddress.neighborhood,
+      },
+    });
+
+    if (success) navigate('/profile/billing-addresses');
+  };
+
+  return { control, onSubmit, errors, disableFields, setValue };
+};

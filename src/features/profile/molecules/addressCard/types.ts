@@ -20,6 +20,7 @@ export type IAddressCardProps = {
   isDefault: boolean;
   hideActions?: boolean;
   hideDeliveryInstructions?: boolean;
+  overrideLabel?: string;
   onEdit?: (addressId?: string) => void;
   onDelete?: (addressId: string) => void;
   onSetDefault?: (addressId: string) => void;

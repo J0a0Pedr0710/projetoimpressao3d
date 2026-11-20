@@ -62,6 +62,21 @@ declare module 'models' {
     messages: INotificationMessage[];
   };
 
+  type IBillingAddress = {
+    id: string | null;
+    name: string | null;
+    telephone: string | null;
+    cep: string | null;
+    country: string | null;
+    street: string | null;
+    number: string | null;
+    complement: string | null;
+    neighborhood: string | null;
+    city: string | null;
+    state: string | null;
+    isDefault: boolean;
+  };
+
   type ICartItem = {
     id: string;
     type: 'SHIPPING' | 'WALLET';
@@ -76,6 +91,33 @@ declare module 'models' {
     carrier?: string;
     enableCheck?: boolean;
     isLoadingItem?: boolean;
+  };
+
+  type IOrderItem = {
+    productId: string;
+    quantity: number;
+    price: number;
+    name: string;
+    imgUrl?: string;
+  };
+
+  type IOrder = {
+    id: string;
+    userId: string;
+    shippingAddress: {
+      cep: string;
+      street: string;
+      number: string;
+      complement?: string;
+      neighborhood: string;
+      city: string;
+      state: string;
+    };
+    items: IOrderItem[];
+    total: number;
+    status: 'pending' | 'paid' | 'canceled';
+    created_at: string;
+    updated_at: string;
   };
 
   type IProductCartItem = {

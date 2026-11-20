@@ -17,11 +17,13 @@ export const ProfilePersonalForm = ({
   typeDocument,
   onChangeDocumentType,
   errors,
+  onClickEdit,
+  isEditing,
 }: IProfilePersonalData) => {
   const { loading } = useApp();
   const { firstName, lastName, typeDocumentLabel, document, mail } = messages.label;
 
-  const { updateData } = messages.texts;
+  const { updateData, editData } = messages.texts;
 
   return (
     <>
@@ -55,7 +57,7 @@ export const ProfilePersonalForm = ({
             isRequired
             width={'full'}
             isSearchable={false}
-            disabled
+            disabled={!isEditing}
           />
         </GridItem>
         <GridItem cols={{ base: 12 }} />
@@ -70,7 +72,7 @@ export const ProfilePersonalForm = ({
               formatDocumentByType({ document: value, type: typeDocument ?? ETypeDocuments.CPF })
             }
             errorMessage={errors.documents?.[0]?.valueDocument?.message}
-            disabled
+            disabled={!isEditing}
           />
         </GridItem>
         <GridItem cols={{ base: 12, sm: 6 }}>
@@ -80,11 +82,15 @@ export const ProfilePersonalForm = ({
             label={mail}
             isRequired
             isFullWidth
-            disabled
+            disabled={!isEditing}
           />
         </GridItem>
 
-        <GridItem cols={{ base: 12, sm: 12 }} justify="end">
+        <GridItem cols={{ base: 12, sm: 12 }} justify="end" spacing={2}>
+          <Button variant="secondary" type="button" isSkeleton={loading} onClick={onClickEdit}>
+            {editData}
+          </Button>
+
           <Button variant="primary" type="submit" isSkeleton={loading}>
             {updateData}
           </Button>

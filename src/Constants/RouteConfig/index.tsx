@@ -1,14 +1,21 @@
 import { type RouteObject } from 'react-router-dom';
 
 import {
-  profileAddresses,
+  billingAddressRouteHandle,
+  billingAddressesRouteHandle,
+  myOrdersRouteHandle,
   profileAddressRouteHandle,
+  profileAddresses,
   profilePersonalDataRouteHandle,
   profileRouteHandle,
 } from '@/constants/mainTemplateRouteHandles';
 import { About } from '@/features/about';
 import { Home } from '@/features/home';
+import { AddBillingAddressPage } from '@/features/profile/pages/addBillingAddressPage';
 import { AddProfilePage } from '@/features/profile/pages/addProfilePage';
+import { BillingAddressPage } from '@/features/profile/pages/billingAddressPage';
+import { BillingAddressPageEdit } from '@/features/profile/pages/billingAddressPageEdit';
+import { MyOrders } from '@/features/profile/pages/myOrders';
 import { ProfileAddressPageEdit } from '@/features/profile/pages/profileAddressPageEdit';
 import { ProfilePage } from '@/features/profile/pages/profilePage';
 import { ProfilePersonalDataPage } from '@/features/profile/pages/profilePersonalDataPage';
@@ -52,6 +59,22 @@ export const routeConfig: RouteObject[] = [
         element: <RegisterAddresses />,
         handle: profileAddresses,
       },
+      {
+        path: 'billing-addresses',
+        element: <BillingAddressPage />,
+        handle: billingAddressesRouteHandle,
+      },
+      {
+        path: 'addBillingAddress',
+        element: <AddBillingAddressPage />,
+        handle: billingAddressRouteHandle,
+      },
+      {
+        path: 'billing-address/:billingAddressId',
+        element: <BillingAddressPageEdit />,
+        handle: billingAddressRouteHandle,
+      },
+      { path: 'my-orders', element: <MyOrders />, handle: myOrdersRouteHandle },
     ],
   },
 

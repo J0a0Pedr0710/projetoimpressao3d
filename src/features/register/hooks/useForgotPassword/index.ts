@@ -31,7 +31,7 @@ export const useForgotPassword = () => {
     forgotPasswordController
       .requestNewCode(input)
       .then(({ email }) => {
-        navigate(`forgot-password/email-confirm?email=${encodeURIComponent(email)}`);
+        navigate(`/forgot-password/email-confirm?email=${encodeURIComponent(email)}`);
       })
       .catch((error) => {
         if (typeof error === 'string') {

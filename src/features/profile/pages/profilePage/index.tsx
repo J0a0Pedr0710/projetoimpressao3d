@@ -23,7 +23,8 @@ export const ProfilePage = () => {
   const { imgProfile, setProfileImg, profile } = useProfile();
   const { openAlert, setLoading } = useApp();
 
-  const { handleEditProfileDataNavigation, handleAddressesNavigation } = useNavigations();
+  const { handleEditProfileDataNavigation, handleAddressesNavigation, handleOrdersNavigation } =
+    useNavigations();
 
   const { unknownError, invalidFileType } = messages.error;
   const { noSelectFile, myData, myOrders, addressess, favorites } = messages.texts;
@@ -87,7 +88,12 @@ export const ProfilePage = () => {
             color="primary600"
             onClick={handleEditProfileDataNavigation}
           />
-          <OptionsCard icon="orders" title={myOrders} color="primary600" />
+          <OptionsCard
+            icon="orders"
+            title={myOrders}
+            color="primary600"
+            onClick={handleOrdersNavigation}
+          />
           <OptionsCard
             icon="location"
             title={addressess}
