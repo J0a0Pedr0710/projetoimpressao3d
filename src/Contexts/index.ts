@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import {
   AppContext,
   AuthContext,
+  BillingAddressContext,
   CartContext,
   MainTemplateContext,
   ProfileContext,
@@ -17,6 +18,7 @@ const useMainTemplateContext = () => useContext(MainTemplateContext);
 const useCart = () => useContext(CartContext);
 const useProfile = () => useContext(ProfileContext);
 const useTransactionContext = () => useContext(TransactionContext);
+const useBillingAddress = () => useContext(BillingAddressContext);
 
 export {
   useApp,
@@ -26,4 +28,5 @@ export {
   useProfile,
   useTransactionContext,
   useSignUpContext,
+  useBillingAddress,
 };

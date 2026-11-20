@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { messages } from '@/assets/messages';
 import {
   AddressCardActions,
@@ -10,6 +12,7 @@ import {
 } from '@/features/profile/molecules/addressCard/style';
 import type { IAddressCardProps } from '@/features/profile/molecules/addressCard/types';
 import { AddressProfileInformation } from '@/features/profile/molecules/addressProfileInformation';
+import { ConfirmDeleteModal } from '@/features/profile/molecules/confirmDeleteModal';
 import { GridItem } from '@/features/shared/molecules/gridItem';
 
 export const AddressCard = ({
@@ -21,12 +24,20 @@ export const AddressCard = ({
   onSetDefault,
   hideActions = false,
   hideDeliveryInstructions = false,
+  overrideLabel,
 }: IAddressCardProps) => {
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const { defaultAddress, defineDefaultAddress, exclude, toAlter } = messages.texts;
+
+  const handleDelete = () => {
+    setIsConfirmOpen(false);
+    if (!address.id) return;
+    onDelete?.(address.id);
+  };
 
   return (
     <AddressCardInfo>
-      {isDefault && <DefaultAddressLabel>{defaultAddress}</DefaultAddressLabel>}
+      {isDefault && <DefaultAddressLabel>{overrideLabel ?? defaultAddress}</DefaultAddressLabel>}
 
       <AddressProfileInformation
         person={profile}
@@ -45,7 +56,7 @@ export const AddressCard = ({
             <Divider />
 
             <DeleteWrapper>
-              <button type="button" onClick={() => address.id && onDelete?.(address.id)}>
+              <button type="button" onClick={() => address.id && setIsConfirmOpen(true)}>
                 {exclude}
               </button>
             </DeleteWrapper>
@@ -63,6 +74,11 @@ export const AddressCard = ({
           </AddressCardActions>
         </GridItem>
       )}
+      <ConfirmDeleteModal
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        onConfirm={handleDelete}
+      />
     </AddressCardInfo>
   );
 };

@@ -62,6 +62,21 @@ declare module 'models' {
     messages: INotificationMessage[];
   };
 
+  type IBillingAddress = {
+    id: string | null;
+    name: string | null;
+    telephone: string | null;
+    cep: string | null;
+    country: string | null;
+    street: string | null;
+    number: string | null;
+    complement: string | null;
+    neighborhood: string | null;
+    city: string | null;
+    state: string | null;
+    isDefault: boolean;
+  };
+
   type ICartItem = {
     id: string;
     type: 'SHIPPING' | 'WALLET';
