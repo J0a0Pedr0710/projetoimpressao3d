@@ -7,6 +7,7 @@ import type { IAddressProfileInformation } from '@/features/profile/molecules/ad
 import { Text } from '@/features/shared/atoms/text';
 import { formatPhoneNumber } from '@/utils/format/formatPhone';
 import { getCountryMask } from '@/utils/services/getCountryMask';
+import { getCountryName } from '@/utils/services/getCountryName';
 
 export const AddressProfileInformation = ({
   person,
@@ -34,7 +35,7 @@ export const AddressProfileInformation = ({
 
       {localityLine && <Text>{localityLine}</Text>}
 
-      {address.country && <Text>{address.country}</Text>}
+      {address.country && <Text>{getCountryName(address.country)}</Text>}
 
       {telephone && (
         <Text>

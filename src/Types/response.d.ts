@@ -116,6 +116,21 @@ declare module 'response' {
     isDefault?: boolean;
   };
 
+  type IBillingAddressResponse = {
+    id: string | null;
+    name: string | null;
+    telephone: string | null;
+    cep: string | null;
+    country: string | null;
+    street: string | null;
+    number: string | null;
+    complement: string | null;
+    neighborhood: string | null;
+    city: string | null;
+    state: string | null;
+    isDefault: boolean;
+  };
+
   type IForgotPasswordResponse = {
     success: boolean;
     email: string;

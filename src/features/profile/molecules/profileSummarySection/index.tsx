@@ -16,7 +16,7 @@ export const ProfileSummarySection = ({
     <ProfileSummaryHeader>
       <ProfileSummaryHeading>
         <Icon icon={icon} color="primary600" size={6} />
-        <Title isBold size="lg">
+        <Title isBold size="xl">
           {title}
         </Title>
       </ProfileSummaryHeading>

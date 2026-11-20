@@ -3,6 +3,7 @@ import { createContext } from 'react';
 import type {
   IAppContext,
   IAuthContext,
+  IBillingAddressContext,
   ICartContext,
   IMainTemplateContext,
   IProfileContext,
@@ -17,3 +18,4 @@ export const MainTemplateContext = createContext({} as IMainTemplateContext);
 export const CartContext = createContext({} as ICartContext);
 export const ProfileContext = createContext({} as IProfileContext);
 export const TransactionContext = createContext({} as ITransactionContext);
+export const BillingAddressContext = createContext({} as IBillingAddressContext);

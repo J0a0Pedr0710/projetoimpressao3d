@@ -1,8 +1,8 @@
 import type { Dispatch, ReactNode, SetStateAction } from 'react';
 
-import type { INotification, IProfile, IUser } from 'models';
+import type { IBillingAddress, INotification, IProfile, IUser } from 'models';
 
-import type { IWalletMenuTransactions, IWalletTransactions } from '@/types/props';
+import type { IWalletMenuTransactions, IWalletTransactions, IBillingAddressInputModel } from '@/types/props';
 
 import type { ETransactionStatus } from './enum';
 
@@ -97,6 +97,15 @@ declare module 'contexts' {
     setDefaultAddress: (addressId: string) => Promise<boolean>;
     removeAddress: (addressId: string) => Promise<boolean>;
     addAddress: (data: IProfileAddressDataInputModel) => Promise<boolean>;
+  };
+
+  type IBillingAddressContext = {
+    billingAddresses: IBillingAddress[];
+    setBillingAddresses: IDispatch<IBillingAddress[]>;
+    addBillingAddress: (data: IBillingAddressInputModel) => Promise<boolean>;
+    removeBillingAddress: (id: string) => Promise<boolean>;
+    updateBillingAddress: (id: string, data: IBillingAddressInputModel) => Promise<boolean>;
+    setDefaultBillingAddress: (id: string) => Promise<boolean>;
   };
 
   type ISignUpContext = {
