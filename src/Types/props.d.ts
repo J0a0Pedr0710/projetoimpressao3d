@@ -224,6 +224,21 @@ declare module 'props' {
     };
   };
 
+  type IBillingAddressInputModel = {
+    billingAddress: {
+      name?: string;
+      telephone?: string;
+      cep?: string;
+      country?: string;
+      street?: string;
+      number?: string;
+      complement?: string;
+      neighborhood?: string;
+      city?: string;
+      state?: string;
+    };
+  };
+
   type IColorPickerMenuProps = {
     color: string;
     setColor: (color: string) => void;

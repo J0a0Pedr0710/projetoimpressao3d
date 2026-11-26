@@ -63,5 +63,17 @@ export const FileInputLabel = styled.label`
       width: 14px;
       height: 14px;
     }
+
+    @media (max-width: ${({ theme }) => theme.screen.xs}) {
+      right: 36%;
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.screen.xxs}) {
+      right: 34%;
+      width: 28px;
+      height: 28px;
+    }
   }
 `;

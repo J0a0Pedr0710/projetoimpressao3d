@@ -13,7 +13,7 @@ export const SidebarLink = ({ option }: ISidebarButton) => {
   const { pathname, layoutMenuOpen, isNotifyDeparture, openNotifyDepartureModal } = useApp();
   const navigate = useNavigate();
 
-  const isActive = pathname.split('/')[1] === option.to?.split('/')[1];
+  const isActive = pathname === option.to || pathname.startsWith(option.to + '/');
   const isOpen = layoutMenuOpen === 'sidebar';
 
   const { saveChanges } = messages.texts;

@@ -12,6 +12,8 @@ import { chevronDown } from '@/assets/icons/chevronDown';
 import { chevronLeft } from '@/assets/icons/chevronLeft';
 import { chevronRight } from '@/assets/icons/chevronRight';
 import { chevronUp } from '@/assets/icons/chevronUp';
+import { configure } from '@/assets/icons/configure';
+import { email } from '@/assets/icons/email';
 import { emailConfirm } from '@/assets/icons/emailConfirm';
 import { emailVerified } from '@/assets/icons/emailVerified';
 import { errorCircle } from '@/assets/icons/errorCircle';
@@ -36,7 +38,8 @@ import { user } from '@/assets/icons/user';
 import { wallet } from '@/assets/icons/wallet';
 import { whatsapp } from '@/assets/icons/whatsapp';
 import { x } from '@/assets/icons/x';
-import { email } from './email';
+import { ordersActive } from '@/assets/icons/ordersActive';
+import { userDataEdit } from './userDataEdit';
 
 export const ProjetoIcons = {
   actionIcon,
@@ -77,5 +80,8 @@ export const ProjetoIcons = {
   user,
   favorite,
   location,
-  email
+  email,
+  configure,
+  ordersActive,
+  userDataEdit
 };

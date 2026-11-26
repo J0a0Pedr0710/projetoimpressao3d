@@ -41,6 +41,34 @@ declare module 'response' {
     cart: IProductCartItem[];
   };
 
+  type IOrdersResponse = {
+    orders: Array<{
+      _id: string;
+      userId: string;
+      shippingAddress: {
+        cep: string;
+        street: string;
+        number: string;
+        complement?: string;
+        neighborhood: string;
+        city: string;
+        state: string;
+      };
+      items: Array<{
+        productId: string;
+        quantity: number;
+        price: number;
+        name: string;
+        imgUrl?: string;
+        _id: string;
+      }>;
+      total: number;
+      status: 'pending' | 'paid' | 'canceled';
+      created_at: string;
+      updated_at: string;
+    }>;
+  };
+
   type ICreateOrderResponse = {
     order: {
       id: string;
@@ -114,6 +142,21 @@ declare module 'response' {
     country?: string;
     short_state?: string;
     isDefault?: boolean;
+  };
+
+  type IBillingAddressResponse = {
+    id: string | null;
+    name: string | null;
+    telephone: string | null;
+    cep: string | null;
+    country: string | null;
+    street: string | null;
+    number: string | null;
+    complement: string | null;
+    neighborhood: string | null;
+    city: string | null;
+    state: string | null;
+    isDefault: boolean;
   };
 
   type IForgotPasswordResponse = {

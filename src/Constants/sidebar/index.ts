@@ -5,10 +5,10 @@ const { myOrders } = messages.texts;
 
 export const defaultSidebarOptions: ISideBarOptions[] = [
   {
-    icon: 'info',
-    activeIcon: 'myOrders',
+    icon: 'orders',
+    activeIcon: 'ordersActive',
     name: myOrders,
-    to: '/my-Orders',
+    to: '/profile/my-orders',
     enableTypes: ['USER'],
     showOnPath: '/profile',
   },

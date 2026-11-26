@@ -9,4 +9,6 @@ export type IProfilePersonalData = {
   onChangeDocumentType: (document: IDocumentsOptions) => void;
   typeDocument: ETypeDocuments;
   errors: FieldErrors<IProfileData>;
+  onClickEdit?: () => void;
+  isEditing: boolean;
 };
